@@ -1,0 +1,14 @@
+TALKING HEAD: Welcome!
+
+TALKING HEAD: I see you've come to see how we've reviewed your application.
+Give me just a moment.
+
+/You see as the man slams a gargantuan pile of papers in front of you.
+
+TALKING HEAD: This is our criteria. I am obligated by law to give you this.
+
+/Picked up: 10kg of documents
+
+TALKING HEAD: I VERY MUCH reccommend you read it.
+
+TALKING HEAD: It will increase your chances by up to 4%.

@@ -1,18 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://djk14je0vupb"]
+[gd_scene load_steps=5 format=3 uid="uid://djk14je0vupb"]
 
 [ext_resource type="Texture2D" uid="uid://dchnuqhs0l8so" path="res://assets/tv-man.png" id="1_hxnfk"]
 [ext_resource type="Script" path="res://Game.gd" id="1_nevx3"]
+[ext_resource type="Texture2D" uid="uid://dfqm6ybj1v6sm" path="res://assets/office.png" id="2_mib4p"]
+[ext_resource type="FontFile" uid="uid://bltlmx5euowoc" path="res://assets/Silver.ttf" id="4_jpoeh"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nevx3")
 
+[node name="Office" type="Sprite2D" parent="."]
+position = Vector2(113, 110)
+texture = ExtResource("2_mib4p")
+
 [node name="Tv-man" type="Sprite2D" parent="."]
-position = Vector2(96, 95)
+position = Vector2(103, 104)
 texture = ExtResource("1_hxnfk")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 144.0
-offset_top = 40.0
-offset_right = 336.0
-offset_bottom = 80.0
-text = "sup my niggas"
+[node name="DialogueLabel" type="RichTextLabel" parent="."]
+offset_left = 13.0
+offset_top = 225.0
+offset_right = 209.0
+offset_bottom = 265.0
+theme_override_fonts/normal_font = ExtResource("4_jpoeh")
+theme_override_font_sizes/normal_font_size = 16
+text = "
+"
+
+[node name="NPCLabel" type="RichTextLabel" parent="."]
+offset_left = 9.0
+offset_top = 202.0
+offset_right = 205.0
+offset_bottom = 242.0
+theme_override_fonts/normal_font = ExtResource("4_jpoeh")
+theme_override_font_sizes/normal_font_size = 16
