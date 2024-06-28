@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://djk14je0vupb"]
+
+[ext_resource type="Texture2D" uid="uid://dchnuqhs0l8so" path="res://assets/tv-man.png" id="1_hxnfk"]
+[ext_resource type="Script" path="res://Game.gd" id="1_nevx3"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_nevx3")
+
+[node name="Tv-man" type="Sprite2D" parent="."]
+position = Vector2(96, 95)
+texture = ExtResource("1_hxnfk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 144.0
+offset_top = 40.0
+offset_right = 336.0
+offset_bottom = 80.0
+text = "sup my niggas"
