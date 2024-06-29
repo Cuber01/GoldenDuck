@@ -75,13 +75,13 @@ func next() -> DialogueRV:
 					while ch != " " or i > len(line):
 						keyword += ch
 						i += 1
-					i += 2 # skip space
+					i += 1 # skip space
 					if keyword == "JUMP":
 						var jump_to: String = ""
 						while ch.is_valid_float():
 							jump_to += ch
 							i += 1
-						line_index = int(jump_to)
+						line_index = int(jump_to)-2 # -2 cause we increase it later and start at zero
 						break
 					elif keyword == "END":	
 						rv.type = ReturnType.END
