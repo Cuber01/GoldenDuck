@@ -75,8 +75,9 @@ func next() -> DialogueRV:
 					while ch != " " or i > len(line):
 						keyword += ch
 						i += 1
-					i += 1 # skip space
+					
 					if keyword == "JUMP":
+						i += 1 # skip space
 						var jump_to: String = ""
 						while ch.is_valid_float():
 							jump_to += ch
