@@ -1,51 +1,131 @@
 class_name DialogueParser
 extends Node
 
-var variables: Dictionary = {}
+var choices: Dictionary = {}
+var indentation_level: int = 0
 
 var last_npc: String
 var lines: Array
 
 var line_index = 0
 
+class DialogueRV:
+	var type: ReturnType = ReturnType.NONE
+	var character_name: String = ""
+	var content: Array = []
+
+enum ReturnType {
+	DIALOGUE,
+	CHOICES,
+	END,
+	NONE
+}
+
 func prepare_file(filepath: String):
 	var text: String = FileAccess.open(filepath, FileAccess.READ).get_as_text()
-	lines = text.split("\n")
+	lines = text.replace("\n", " \n").split("\n", true)
+	print(lines)
 
-func next() -> Array:
+var ch: String = ""
+var line: String
+var i: int = 0:
+	set(value):
+		i = value
+		ch = line[i]
+
+func next() -> DialogueRV:
 	var dialogue_line: String
+	var rv: DialogueRV = DialogueRV.new()
 	
 	while line_index < len(lines):
-		var line: String = lines[line_index]
+		line = lines[line_index]
 
-		if len(line) == 0:
+		if len(line) <= 1:
 			line_index += 1
-			return [last_npc, dialogue_line]
-		else: dialogue_line += " "
+			rv.character_name = last_npc
+			rv.content.append(dialogue_line)
+			if rv.type == ReturnType.NONE:
+				rv.type = ReturnType.DIALOGUE
+			return rv
 		
-		var i: int = 0
-		while i < len(line):
-			var char: String = line[i]
-			
-			# Narrator (No character)
-			if char == "/":
-				dialogue_line[i-1] = "" # Remove space
-				last_npc = ""
-				i += 1
-			# Character
-			elif i == 0 and char == char.to_upper() and line[i+1] == line[i+1].to_upper():
-				last_npc = ""
-				dialogue_line[0] = "" # Remove space
-				while char != ":":
-					last_npc += char
+		i = 0
+		while i+1 < len(line):
+			ch = line[i]
+		
+			if i == indentation_level:
+				# Indent — if it's not our current indent we ignore it
+				if ch == "\t":
+					var k: int = 1
+					while line[i+k] == "\t":
+						k += 1
+					
+					if(indentation_level != k):
+						break
+				else:
+					indentation_level = 0
+				
+				# Narrator (No character)
+				if ch == "/":
+					last_npc = ""
+				
+				# Keyword
+				elif ch == "$":
+					var keyword: String
 					i += 1
-					char = line[i]
-				i += 2 # Ignore the ':' and space
-			# Dialogue text
-			else:
-				dialogue_line += char
+					while ch != " " or i > len(line):
+						keyword += ch
+						i += 1
+					i += 2 # skip space
+					if keyword == "JUMP":
+						var jump_to: String = ""
+						while ch.is_valid_float():
+							jump_to += ch
+							i += 1
+						line_index = int(jump_to)
+						break
+					elif keyword == "END":	
+						rv.type = ReturnType.END
+						return rv
+					else:
+						print("error")
+				
+				# Choice — add and change rv type
+				elif ch == "-":
+					i += 2 # Skip space and '-'
+					var choice: String
+					while i < len(line):
+						choice += ch
+						i += 1
+					rv.content.append(choice)
+					choices[choice] = line_index+1
+					rv.type = ReturnType.CHOICES
+					break
+				
+				elif ch == ch.to_upper() and line[i+1] == line[i+1].to_upper():
+					last_npc = ""
+					while ch != ":":
+						last_npc += ch
+						i += 1
+					i += 1 # Ignore the ':'
+				
+			# Ignore tabs
+			elif ch == "\t":
 				i += 1
+				continue
+			
+			# Add dialogue text
+			else: 
+				dialogue_line += ch
+			
+			i += 1
 				
 		line_index += 1
 				
-	return [null]
+	return rv
+
+func choose(id: String):
+	indentation_level += 1
+	line_index = choices[id]
+	
+func jump(line: int):
+	pass
