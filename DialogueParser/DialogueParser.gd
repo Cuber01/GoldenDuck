@@ -52,7 +52,7 @@ func parse_file():
 	while line_index < len(lines):
 		line = lines[line_index]
 		
-		if line == "":
+		if line == "" or line == " ":
 			emit_token(TokenType.EMPTY_LINE)
 		else: 
 			i = 0
@@ -64,7 +64,7 @@ func parse_file():
 				while line[i+k] == "\t":
 					k += 1
 				emit_token(TokenType.INDENT)
-				emit_token(k)
+				emit_token(k, true)
 				
 			# Narrator (No character)
 			elif ch == "/":
@@ -72,7 +72,6 @@ func parse_file():
 				if ch == "/":
 					emit_token(TokenType.CHARACTER)
 					emit_token("")
-					i += 1
 				else:
 					var npc: String
 					while ch != ":":
@@ -97,9 +96,11 @@ func parse_file():
 						jump_to += ch
 						i += 1
 					emit_token(TokenType.JUMP)
-					emit_token(int(jump_to)-2)
+					emit_token(int(jump_to)-2, true)
+					break
 				elif keyword == "END":	
 					emit_token(TokenType.END)
+					break
 				else:
 					print("Unknown Keyword")
 			
@@ -125,25 +126,11 @@ func parse_file():
 				
 		line_index += 1
 
-func emit_token(value):
-	if value is TokenType:
+func emit_token(value, passing_int=false):
+	if value is TokenType and not passing_int:
 		var token: Token = Token.new()
 		token.type = value
 		token.line = line_index
 		tokens.append(token)
 	else:
 		tokens.append(value)
-
-func is_letter(char: String):
-	spb.data_array = char.to_ascii_buffer()
-	var ascii_code = spb.get_float() 
-	if ascii_code > 97 and ascii_code < 122:
-		return true
-	return false
-
-func choose(id: String):
-	indentation_level += 1
-	line_index = choices[id]
-	
-func jump(line: int):
-	pass

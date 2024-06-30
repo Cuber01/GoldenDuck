@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var DP: DialogueParser = DialogueParser.new()
+@onready var DI: DialogueInterpreter = DialogueInterpreter.new()
 @onready var DialogueLabel = $DialogueLabel
 @onready var NPCLabel = $NPCLabel
 
@@ -22,12 +23,12 @@ func _process(delta):
 		DialogueLabel.visible_characters = text_index
 
 func go_further():
-	var dialogue_info: DialogueParser.DialogueRV = DP.next()
-	if dialogue_info.type == DialogueParser.ReturnType.DIALOGUE:
+	var dialogue_info: DialogueInterpreter.DialogueRV = DP.next()
+	if dialogue_info.type == DialogueInterpreter.ReturnType.DIALOGUE:
 		update_dialogue(dialogue_info)
-	elif dialogue_info.type == DialogueParser.ReturnType.CHOICES:
+	elif dialogue_info.type == DialogueInterpreter.ReturnType.CHOICES:
 		choice_menu(dialogue_info.content)
-	elif dialogue_info.type == DialogueParser.ReturnType.END:
+	elif dialogue_info.type == DialogueInterpreter.ReturnType.END:
 		end_dialogue()
 	else:
 		print("err")
@@ -43,7 +44,7 @@ func choice_menu(choices: Array):
 	enter_to_continue = false
 	add_child(choices_menu)
 
-func update_dialogue(dialogue_info: DialogueParser.DialogueRV):
+func update_dialogue(dialogue_info: DialogueInterpreter.DialogueRV):
 	text_index = 0
 	max_text_index = len(dialogue_info.content[0])
 	NPCLabel.text = dialogue_info.character_name
