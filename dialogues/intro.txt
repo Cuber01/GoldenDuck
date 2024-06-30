@@ -1,4 +1,7 @@
 /TALKING HEAD: sigma
-gaming
-forreal
+	gaming
+	forreal
+
+//You are a nice person
+
 $JUMP 1

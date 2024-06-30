@@ -21,6 +21,8 @@ enum ReturnType {
 var dialogue_line: String
 
 var token
+var line: int
+
 var i: int = 0:
 	set(value):
 		i = value
@@ -32,31 +34,41 @@ func get_next_dialogue() -> DialogueRV:
 	
 	token = tokens[i]
 	while i < len(tokens)-1:
+		line = token.line
 		
 		if token.type == DP.TokenType.INDENT:
-			pass
+			var indent_amount = next()
+			if indent_amount != indentation_level:
+				var peeked_val = peek()
+				while (peeked_val is DP.Token and peeked_val.line == line) or not peeked_val is DP.Token:
+					next()
+					peeked_val = peek()
 		elif token.type == DP.TokenType.JUMP:
 			var jump_to = int(next())
 			jump(jump_to)
 			i -= 1
 		elif token.type == DP.TokenType.END:
 			rv.type = ReturnType.END
+			
 			return rv
 		elif token.type == DP.TokenType.CHARACTER:
 			var npc_name = next()
+			var dialogue_line: String
 			while peek().type == DP.TokenType.TEXT:
 				dialogue_line += skip_next() + " "
 			next()
+			
 			rv.content.append(dialogue_line)
 			rv.character_name = npc_name
 			rv.type = ReturnType.DIALOGUE
 			return rv
 		elif token.type == DP.TokenType.CHOICE:
-			pass
+			var choice: String = skip_next()
+			choices[choice] = line+1
 		elif token.type == DP.TokenType.TEXT:
 			print("Text — is it useless?")
 		elif token.type == DP.TokenType.EMPTY_LINE:
-			pass
+			print("Empty line — is it useless?")
 		
 		i += 1
 	return null
