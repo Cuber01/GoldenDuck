@@ -1,7 +1,1 @@
-TALKING HEAD: Welcome! sigma
-
-/He died
-
-TALKING HEAD: sigma
-
-$END
+/TALKING HEAD: sigma

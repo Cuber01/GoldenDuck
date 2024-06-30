@@ -13,8 +13,6 @@ var enter_to_continue: bool = true
 
 func _ready():
 	DP.prepare_file("res://dialogues/intro.txt")
-	var dialogue_info: DialogueParser.DialogueRV = DP.next()
-	update_dialogue(dialogue_info)
 
 func _process(delta):
 	if enter_to_continue and Input.is_action_just_pressed("ui_accept"):
