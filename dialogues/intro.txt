@@ -1,6 +1,4 @@
 /TALKING HEAD: sigma
-	Hello
-	$END
-
-$JUMP 2
-//This is a most unfortunate development
+gaming
+forreal
+$JUMP 1

@@ -1,4 +1,4 @@
-class_name DialogueParser
+class_name DP
 extends Node
 
 var lines: Array
@@ -38,8 +38,7 @@ class Token:
 func prepare_file(filepath: String):
 	var text: String = FileAccess.open(filepath, FileAccess.READ).get_as_text()
 	lines = text.replace("\n", " \n").split("\n", true)
-	parse_file()
-	print(tokens)
+	return parse_file()
 
 var ch: String = ""
 var line: String
@@ -96,7 +95,7 @@ func parse_file():
 						jump_to += ch
 						i += 1
 					emit_token(TokenType.JUMP)
-					emit_token(int(jump_to)-2, true)
+					emit_token(int(jump_to)-1, true)
 					break
 				elif keyword == "END":	
 					emit_token(TokenType.END)
@@ -125,6 +124,7 @@ func parse_file():
 			i += 1
 				
 		line_index += 1
+	return tokens
 
 func emit_token(value, passing_int=false):
 	if value is TokenType and not passing_int:

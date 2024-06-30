@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var DP: DialogueParser = DialogueParser.new()
+@onready var Parser = DP.new()
 @onready var DI: DialogueInterpreter = DialogueInterpreter.new()
 @onready var DialogueLabel = $DialogueLabel
 @onready var NPCLabel = $NPCLabel
@@ -13,7 +13,7 @@ var choices_menu: ChoicesMenu = null
 var enter_to_continue: bool = true
 
 func _ready():
-	DP.prepare_file("res://dialogues/intro.txt")
+	DI.tokens = Parser.prepare_file("res://dialogues/intro.txt")
 
 func _process(delta):
 	if enter_to_continue and Input.is_action_just_pressed("ui_accept"):
@@ -23,7 +23,7 @@ func _process(delta):
 		DialogueLabel.visible_characters = text_index
 
 func go_further():
-	var dialogue_info: DialogueInterpreter.DialogueRV = DP.next()
+	var dialogue_info: DialogueInterpreter.DialogueRV = DI.get_next_dialogue()
 	if dialogue_info.type == DialogueInterpreter.ReturnType.DIALOGUE:
 		update_dialogue(dialogue_info)
 	elif dialogue_info.type == DialogueInterpreter.ReturnType.CHOICES:
@@ -53,6 +53,6 @@ func update_dialogue(dialogue_info: DialogueInterpreter.DialogueRV):
 	
 func _on_choice_taken(id: String):
 	choices_menu.queue_free()
-	DP.choose(id)
+	Parser.choose(id)
 	go_further()
 	enter_to_continue = true
