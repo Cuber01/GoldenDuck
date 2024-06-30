@@ -12,7 +12,8 @@ enum TokenType {
 	CHARACTER,
 	CHOICE,
 	TEXT,
-	EMPTY_LINE
+	EMPTY_LINE,
+	END_CHOICE
 }
 
 class Token:
@@ -33,6 +34,8 @@ class Token:
 		elif type == TokenType.TEXT:
 			return "[TEXT " + str(line) + "]" 
 		elif type == TokenType.EMPTY_LINE:
+			return "[EMPTY_LINE " + str(line) + "]" 
+		elif type == TokenType.END_CHOICE:
 			return "[EMPTY_LINE " + str(line) + "]" 
 
 func prepare_file(filepath: String):
@@ -100,6 +103,9 @@ func parse_file():
 				elif keyword == "END":	
 					emit_token(TokenType.END)
 					break
+				elif keyword == "ENDCHOICE":
+					emit_token(TokenType.END_CHOICE)
+					break
 				else:
 					print("Unknown Keyword")
 			
@@ -111,6 +117,7 @@ func parse_file():
 					i += 1
 				emit_token(TokenType.CHOICE)
 				emit_token(choice)
+				break
 
 			else: 
 				var dialogue: String

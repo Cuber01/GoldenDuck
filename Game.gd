@@ -53,6 +53,6 @@ func update_dialogue(dialogue_info: DialogueInterpreter.DialogueRV):
 	
 func _on_choice_taken(id: String):
 	choices_menu.queue_free()
-	Parser.choose(id)
+	DI.choose(id)
 	go_further()
 	enter_to_continue = true

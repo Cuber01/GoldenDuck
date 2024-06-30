@@ -1,6 +1,10 @@
-/TALKING HEAD: sigma
-	gaming
-	forreal
+- Ketchup
+	//Fuck u
+	$JUMP 8
+- Mayo
+	//I love you
+	$JUMP 8
+$ENDCHOICE
 
 //You are a nice person
 

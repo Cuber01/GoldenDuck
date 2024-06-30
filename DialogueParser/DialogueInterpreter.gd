@@ -63,8 +63,13 @@ func get_next_dialogue() -> DialogueRV:
 			rv.type = ReturnType.DIALOGUE
 			return rv
 		elif token.type == DP.TokenType.CHOICE:
-			var choice: String = skip_next()
+			var choice: String = next()
 			choices[choice] = line+1
+		elif token.type == DP.TokenType.END_CHOICE:
+			for c in choices:
+				rv.content.append(c)
+			rv.type = ReturnType.CHOICES
+			return rv
 		elif token.type == DP.TokenType.TEXT:
 			print("Text — is it useless?")
 		elif token.type == DP.TokenType.EMPTY_LINE:
@@ -84,6 +89,10 @@ func jump(jump_to: int):
 				break
 				
 		j += 1
+
+func choose(id: String):
+	jump(choices[id])
+	indentation_level += 1
 
 func skip_next():
 	i += 2
