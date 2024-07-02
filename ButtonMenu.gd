@@ -27,4 +27,5 @@ func _ready():
 		add_child(btn)
 		btn.connect("choice_taken", onChoice)
 	
-	grab_focus()
+	set_focus_mode(Control.FOCUS_CLICK)
+	grab_focus.call_deferred()

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgci7um3g3uso"]
+
+[ext_resource type="Script" path="res://scenery/office.gd" id="1_bqv1b"]
+[ext_resource type="Texture2D" uid="uid://dfqm6ybj1v6sm" path="res://assets/office.png" id="1_hscym"]
+[ext_resource type="Texture2D" uid="uid://dchnuqhs0l8so" path="res://assets/tv-man.png" id="2_6v41x"]
+[ext_resource type="Texture2D" uid="uid://dptdceixq0oe0" path="res://assets/tv-man-pointing-upwards.png" id="3_57bfb"]
+[ext_resource type="Texture2D" uid="uid://d3qpnr5apftt" path="res://assets/desk.png" id="4_tkvun"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bof3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6v41x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_57bfb")
+}],
+"loop": true,
+"name": &"explaining",
+"speed": 5.0
+}]
+
+[node name="Office" type="Node2D"]
+script = ExtResource("1_bqv1b")
+
+[node name="Office" type="Sprite2D" parent="."]
+position = Vector2(101, 101)
+texture = ExtResource("1_hscym")
+
+[node name="TVGuy" type="AnimatedSprite2D" parent="."]
+position = Vector2(65, 75)
+sprite_frames = SubResource("SpriteFrames_bof3k")
+
+[node name="Desk" type="Sprite2D" parent="."]
+position = Vector2(101, 100)
+texture = ExtResource("4_tkvun")

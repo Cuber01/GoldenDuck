@@ -1,11 +1,72 @@
-- Ketchup
-	//Fuck u
-	$JUMP 8
-- Mayo
-	//I love you
-	$JUMP 8
+/TALKING HEAD: Nothing in life is guaranteed.
+
+- DOES IT ALWAYS HELP?
+	/TALKING HEAD: We have to take into account your reading skills,
+	rivals, records, the current attitudes in the market...
+	/PAWN: Oh yes, of course.
+	$INDJUMP 1 2
+- READ IT
+	//You start slowly going through the pile.
+	//As you place your fingers to move on to the next page, you briefly feel the paper's surface. 
+	//It's the driest material you've ever touched.
+
+	//CHAPTER 1: PREAMBLE
+	
+	//Head is eyeing you with a poker face.
+	//As you see there's no end in sight, you start skimming through at a faster pace.
+	
+	//CHAPTER 2: DETAILED PREAMBLE
+	
+	//The text bores you to death. And you still haven't learned anything.
+	//The man continues staring at you, menacingly.
+	
+	//CHAPTER 3: LEGAL JUSTIFICATION
+	
+	//You hear someone mumble. Are they getting impatient?
+	//You immdiatelly fall into pressure, and start scrolling through the pages at a breakneck pace.
+	
+	//CHAPTER 4: FACTUAL JUSTIFICATION
+	CHAPTER 5: APPLIED CONDITIONS
+	CHAPTER 6: LESSER CRITERIA
+	//CHAPTER 8: ETHICAL CRITERIA
+	CHAPTER 9: CONCLUSION
+	CHAPTER 10: COMMENTARY
+	
+	/PAWN: I'm finished!
+	/TALKING HEAD: Excellent!
+	$INDJUMP 1 50
+- NO NEED
+	/TALKING HEAD: Erm... Are you sure?
+	//Talking Head seems genuinely confused.
+	- YES
+		/TALKING HEAD: If you say so.
+		//You sense disgust in their voice.
+		$INDJUMP 2 50
+	- NO
+		/TALKING HEAD: Read it, then.
+		$INDJUMP 2 2
+	$ENDCHOICE
 $ENDCHOICE
+/TALKING HEAD: Since you are familiar with our criteria, 
+we can start your evaluation.
 
-//You are a nice person
+//This is it. This is what you've come here for from the very beginning.
 
-$JUMP 1
+/TALKING HEAD: Unfortunately your application has been rejected.
+
+//Shit.
+
+/TALKING HEAD: It's nothing personal. You just weren't good enough.
+/TALKING HEAD: As you know, our system chooses the best candidates based on your Life Value, LV for short.
+/TALKING HEAD: Which, in turn, can be increased by getting relevant Experience Points — XP.
+/TALKING HEAD: Anything that doesn't give you Experience is, by definition, worthless.
+/TALKING HEAD: If you spent more time doing what's important then perhaps we wouldn't be having this conversation.
+
+//You try to pick up your last pieces of dignity from the floor not to stutter.
+
+/PAWN: But, sir. I have 22 LV. The needed limit was 21 when I checked yesterday.
+/TALKING HEAD: Oh, you're right. We were forced to decrease the number of candidates due to the Everything Crisis.
+	This meant increasing the required LV as well. It's 23 now.
+/PAWN: Isn't there anything I can do?
+
+$END

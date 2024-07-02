@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://tigkkacwsg6d"]
+
+[ext_resource type="Texture2D" uid="uid://pg1vo38rhc04" path="res://assets/street.png" id="1_pqhbi"]
+[ext_resource type="Texture2D" uid="uid://cf3hnlpp8b83" path="res://assets/grandma.png" id="2_b26fb"]
+
+[node name="Street" type="Node2D"]
+
+[node name="City" type="Sprite2D" parent="."]
+position = Vector2(100, 100)
+texture = ExtResource("1_pqhbi")
+
+[node name="Grandma" type="Sprite2D" parent="."]
+position = Vector2(102, 132)
+texture = ExtResource("2_b26fb")

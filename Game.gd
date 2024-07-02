@@ -25,8 +25,10 @@ func _process(delta):
 func go_further():
 	var dialogue_info: DialogueInterpreter.DialogueRV = DI.get_next_dialogue()
 	if dialogue_info.type == DialogueInterpreter.ReturnType.DIALOGUE:
+		$Office.change_pose()
 		update_dialogue(dialogue_info)
 	elif dialogue_info.type == DialogueInterpreter.ReturnType.CHOICES:
+		$Office.change_pose()
 		choice_menu(dialogue_info.content)
 	elif dialogue_info.type == DialogueInterpreter.ReturnType.END:
 		end_dialogue()
