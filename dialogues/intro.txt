@@ -4,7 +4,7 @@
 	/TALKING HEAD: We have to take into account your reading skills,
 	rivals, records, the current attitudes in the market...
 	/PAWN: Oh yes, of course.
-	$INDJUMP 1 2
+	$JUMP 2
 - READ IT
 	//You start slowly going through the pile.
 	//As you place your fingers to move on to the next page, you briefly feel the paper's surface. 
@@ -34,17 +34,17 @@
 	
 	/PAWN: I'm finished!
 	/TALKING HEAD: Excellent!
-	$INDJUMP 1 50
+	$JUMP 50
 - NO NEED
 	/TALKING HEAD: Erm... Are you sure?
 	//Talking Head seems genuinely confused.
 	- YES
 		/TALKING HEAD: If you say so.
 		//You sense disgust in their voice.
-		$INDJUMP 2 50
+		$JUMP 50
 	- NO
 		/TALKING HEAD: Read it, then.
-		$INDJUMP 2 2
+		$JUMP 2
 	$ENDCHOICE
 $ENDCHOICE
 /TALKING HEAD: Since you are familiar with our criteria, 
