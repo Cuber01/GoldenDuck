@@ -13,6 +13,7 @@ var choices_menu: ChoicesMenu = null
 var enter_to_continue: bool = true
 
 func _ready():
+	DI.reset($SceneryManager)
 	DI.tokens = Parser.prepare_file("res://dialogues/intro.txt")
 
 func _process(delta):
@@ -25,10 +26,8 @@ func _process(delta):
 func go_further():
 	var dialogue_info: DialogueInterpreter.DialogueRV = DI.get_next_dialogue()
 	if dialogue_info.type == DialogueInterpreter.ReturnType.DIALOGUE:
-		$Office.change_pose()
 		update_dialogue(dialogue_info)
 	elif dialogue_info.type == DialogueInterpreter.ReturnType.CHOICES:
-		$Office.change_pose()
 		choice_menu(dialogue_info.content)
 	elif dialogue_info.type == DialogueInterpreter.ReturnType.END:
 		end_dialogue()
@@ -59,17 +58,5 @@ func _on_choice_taken(id: String):
 	go_further()
 	enter_to_continue = true
 	
-func transition_fade_out():
-	var tween = create_tween()
-	tween.tween_property($TransitionFade, "color", Color(0,0,0,0), 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 
-func transition_fade_in():
-	var tween = create_tween()
-	tween.tween_property($TransitionFade, "color", Color(0,0,0,1), 1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	
-func transition_curtain():
-	var tween = create_tween()
-	tween.tween_property($TransitionCurtain, "position", Vector2(0,0), 1.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property($TransitionCurtain, "position", Vector2(200,0), 1.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE).set_delay(1)
-	$TransitionCurtain.position = Vector2(-200, 0)
 

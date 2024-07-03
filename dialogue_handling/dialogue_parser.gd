@@ -1,9 +1,9 @@
 class_name DP
 extends Node
 
-var lines: Array
-var line_index = 0
-var tokens = []
+var lines: PackedStringArray
+var line_index := 0
+var tokens: Array[Variant] = []
 
 enum TokenType {
 	INDENT,
@@ -11,9 +11,9 @@ enum TokenType {
 	END,
 	CHARACTER,
 	CHOICE,
-	EMPTY_LINE,
 	END_CHOICE,
-	INDENT_JUMP
+	INDENT_JUMP,
+	CALL
 }
 
 class Token:
@@ -31,12 +31,12 @@ class Token:
 			return "[CHARACTER " + str(line) + "]"
 		elif  type == TokenType.CHOICE:
 			return "[CHOICE " + str(line) + "]" 
-		elif type == TokenType.EMPTY_LINE:
-			return "[EMPTY_LINE " + str(line) + "]" 
 		elif type == TokenType.END_CHOICE:
 			return "[END_CHOICE " + str(line) + "]" 
 		elif type == TokenType.INDENT_JUMP:
 			return "[INDENT_JUMP " + str(line) + "]"
+		elif type == TokenType.CALL:
+			return "[CALL " + str(line) + "]"
 
 func prepare_file(filepath: String):
 	var text: String = FileAccess.open(filepath, FileAccess.READ).get_as_text()
@@ -54,10 +54,9 @@ func parse_file():
 	while line_index < len(lines):
 		line = lines[line_index]
 		
-		if line == "" or line == " ":
-			emit_token(TokenType.EMPTY_LINE)
-		else: 
+		if not(line == "" or line == " "):
 			i = 0
+		
 		while i < len(line):
 			ch = line[i]
 
@@ -121,6 +120,30 @@ func parse_file():
 					emit_token(TokenType.INDENT_JUMP)
 					emit_token(int(indent_change), true)
 					emit_token(int(jump_to)-1, true)
+					break
+				elif keyword == "CALL":
+					i += 1 # skip space
+					var func_name = ""
+					while ch != " " or i > len(line):
+						func_name += ch
+						i += 1
+					
+					var args = []
+					var current_arg = ""
+					while i > len(line):
+						i += 1
+						if ch == " ":
+							args.append(current_arg)
+						else:
+							current_arg += ch
+						
+					
+					args.append(current_arg)
+					emit_token(TokenType.CALL)
+					emit_token(func_name)
+					emit_token(len(args), true)
+					for a in args:
+						emit_token(a)
 					break
 				else:
 					print("Unknown Keyword")

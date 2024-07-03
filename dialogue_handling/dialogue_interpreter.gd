@@ -1,13 +1,15 @@
 extends Node
 class_name DialogueInterpreter
 
-var tokens = []
+var tokens: Array[Variant] = []
 
 var choice_trees: Array = [null,null,null,null,null,null,null,null,null,null]
-var current_choice_index = 0
+var current_choice_index: int = 0
 
 var indentation_level: int = 0
 var last_npc: String
+
+var functions: BuiltinLib
 
 class DialogueRV:
 	var type: ReturnType = ReturnType.NONE
@@ -23,13 +25,25 @@ enum ReturnType {
 
 var dialogue_line: String
 
-var token
-var line: int
+var token: Variant = null
+var line: int = 0
 
 var i: int = 0:
 	set(value):
 		i = value
 		token = tokens[i]
+
+func reset(SceneryManager: BuiltinLib):
+	line = 0
+	token = null
+	dialogue_line = ""
+	last_npc = ""
+	indentation_level = 0
+	current_choice_index = 0
+	tokens = []
+	choice_trees = [null,null,null,null,null,null,null,null,null,null]
+	
+	functions = SceneryManager
 
 func get_next_dialogue() -> DialogueRV:
 	print(tokens)
@@ -88,9 +102,19 @@ func get_next_dialogue() -> DialogueRV:
 			jump(jump_to)
 			indentation_level -= indent_change
 			i -= 1
-		elif token.type == DP.TokenType.EMPTY_LINE:
-			print("Empty line — is it useless?")
-		
+		elif token.type == DP.TokenType.CALL:
+			var func_name = next()
+			var amount_of_args = next()
+			var args = []
+			for a in amount_of_args:
+				args.append(next())
+			
+			var method = Callable(functions, func_name)
+			if len(args) > 1:
+				method.call(args)
+			else:
+				method.call()
+			
 		i += 1
 	return null
 

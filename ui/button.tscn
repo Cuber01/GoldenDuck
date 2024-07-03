@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://citbjsmrsmef4"]
+
+[ext_resource type="FontFile" uid="uid://bltlmx5euowoc" path="res://assets/Silver.ttf" id="1_ko3cd"]
+[ext_resource type="Script" path="res://ui/button.gd" id="2_83255"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yanwr"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7j0o"]
+bg_color = Color(1, 0.317647, 0.427451, 1)
+
+[node name="Button" type="Button"]
+offset_right = 41.0
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("1_ko3cd")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_yanwr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p7j0o")
+script = ExtResource("2_83255")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

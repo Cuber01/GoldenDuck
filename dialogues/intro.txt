@@ -1,5 +1,7 @@
 /TALKING HEAD: Nothing in life is guaranteed.
 
+$CALL transition_fade_in
+
 - DOES IT ALWAYS HELP?
 	/TALKING HEAD: We have to take into account your reading skills,
 	rivals, records, the current attitudes in the market...
