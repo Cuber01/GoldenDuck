@@ -5,7 +5,12 @@ class_name BuiltinLib
 @onready var TransitionCurtain: ColorRect = $TransitionCurtain 
 @onready var audio: AudioStreamPlayer = $AudioPlayer
 
+@onready var XPLabel = $XPLabel
+@onready var NuclearLabel = $NuclearLabel
+@onready var TimeLabel = $TimeLabel
+
 var item_handle = null
+var xp := 500
 
 const ITEM_SCENE = preload("res://scenery/item.tscn")
 const DOCUMENTATION_TEXTURE = preload("res://assets/documentation.png")
@@ -88,3 +93,10 @@ func play_sound(args):
 func stop_playing_sound():
 	var tween = create_tween()
 	tween.tween_property(audio, "volume_db", -80, 4)
+
+func show_xp():
+	XPLabel.visible = true
+
+func gain_xp(args):
+	xp += int(args[0])
+	XPLabel.text = "LV 22 " + str(xp) + "/1000 XP"

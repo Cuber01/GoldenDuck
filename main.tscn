@@ -12,6 +12,42 @@ script = ExtResource("1_nevx3")
 [node name="SceneryManager" parent="." instance=ExtResource("3_wwq8o")]
 position = Vector2(10, 10)
 
+[node name="TimeLabel" type="RichTextLabel" parent="SceneryManager"]
+visible = false
+offset_left = 213.0
+offset_top = 18.0
+offset_right = 409.0
+offset_bottom = 58.0
+theme_override_fonts/normal_font = ExtResource("4_jpoeh")
+theme_override_font_sizes/normal_font_size = 16
+text = "Time left: "
+fit_content = true
+scroll_active = false
+
+[node name="XPLabel" type="RichTextLabel" parent="SceneryManager"]
+visible = false
+offset_left = 213.0
+offset_right = 409.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("4_jpoeh")
+theme_override_font_sizes/normal_font_size = 16
+text = "LV 22 500/1000 XP"
+fit_content = true
+scroll_active = false
+
+[node name="NuclearLabel" type="RichTextLabel" parent="SceneryManager"]
+visible = false
+offset_left = 213.0
+offset_top = 57.0
+offset_right = 409.0
+offset_bottom = 97.0
+theme_override_fonts/normal_font = ExtResource("4_jpoeh")
+theme_override_font_sizes/normal_font_size = 16
+text = "Chance of Nuclear 
+Holocaust: "
+fit_content = true
+scroll_active = false
+
 [node name="Item" parent="SceneryManager" instance=ExtResource("3_5ttt4")]
 position = Vector2(100, 100)
 
