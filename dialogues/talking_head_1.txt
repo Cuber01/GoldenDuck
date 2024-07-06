@@ -1,0 +1,128 @@
+/TALKING HEAD: Welcome!
+/TALKING HEAD: I see you've come to see how we've reviewed your application.
+/TALKING HEAD: Give me just a moment.
+
+$CALL spawn_item documentation
+$CALL play_sound slam.wav
+
+//You see as the man slams a gargantuan pile of papers in front of you.
+
+/TALKING HEAD: This is our criteria.
+
+$CALL item_pickup
+
+//PICKED UP: 10kg of documents
+
+$CALL tvguy_change_pose
+
+/TALKING HEAD: I VERY MUCH reccommend you read it. It will increase your chances by up to 4%.
+- ASK IF IT ALWAYS HELPS
+	/TALKING HEAD: Nothing in life is guaranteed.
+	/TALKING HEAD: We have to take into account your reading skills,
+	rivals, the current attitudes in the market...
+	$INDJUMP 1 19
+- READ IT
+	$CALL tvguy_change_pose
+	//You start slowly going through the pile.
+	//As you place your fingers to move on to the next page, you briefly feel the paper's surface. 
+	//It's the most dry material you've ever touched.
+	
+	//CHAPTER 1: PREAMBLE
+	
+	//Head is eyeing you with a poker face.
+	//As you see there's no end in sight, you start skimming through at a faster pace.
+	
+	//CHAPTER 2: DETAILED PREAMBLE
+	
+	//The text bores you to death. And you still haven't learned anything.
+	//The man continues staring at you, menacingly.
+	
+	//CHAPTER 3: LEGAL JUSTIFICATION
+	
+	//The official is still looking as you read.
+	//Is he getting impatient?
+	//You immediatelly fall into pressure, and start scrolling through the pages at a breakneck pace.
+	
+	//CHAPTER 4: FACTUAL JUSTIFICATION
+	CHAPTER 5: APPLIED CONDITIONS
+	CHAPTER 6: LESSER CRITERIA
+	//CHAPTER 8: ETHICAL CRITERIA
+	CHAPTER 9: COMPLEX CONCLUSIONS
+	CHAPTER 10: SPECIAL COMMENTARY
+	
+	/PAWN: I'm finished!
+	/TALKING HEAD: Excellent!
+	$INDJUMP 1 71
+- NO NEED
+	$CALL tvguy_change_pose
+	/TALKING HEAD: Erm... Are you sure?
+	//Talking Head seems genuinely confused.
+	- YES
+		/TALKING HEAD: If you say so.
+		//You sense disgust in their voice.
+		$INDJUMP 2 71
+	- NO
+		$CALL tvguy_change_pose
+		//Talking Head lets out a sigh.
+		/TALKING HEAD: Read it, then.
+		$INDJUMP 2 19
+	$ENDCHOICE
+$ENDCHOICE
+/TALKING HEAD: Since you are familiar with our criteria, we can start your evaluation.
+
+//This is it. This is what you've come here for from the very beginning.
+
+/TALKING HEAD: Your application has been...
+
+$CALL play_sound stamp.wav
+
+/TALKING HEAD: Rejected.
+
+//Shit.
+
+$CALL tvguy_change_pose
+
+/TALKING HEAD: It's nothing personal. You just weren't good enough.
+/TALKING HEAD: As you know, our system chooses the best candidates based on your Life Value, LV for short.
+/TALKING HEAD: Which in turn can be increased by getting Experience Points, known as XP.
+/TALKING HEAD: Anything that doesn't give you Experience is, by definition, worthless.
+$CALL tvguy_change_pose
+/TALKING HEAD: If you spent more time doing what's important then perhaps we wouldn't be having this conversation.
+
+//You try to pick up last pieces of your shattered dignity from the floor not to stutter.
+
+/PAWN: But, sir. I have 22 LV. The needed limit was 21 when I checked yesterday.
+$CALL tvguy_change_pose
+/TALKING HEAD: Oh, you're right. We were forced to decrease the number of candidates due to the Everything Crisis.
+/TALKING HEAD: This meant increasing the required LV as well. It's 23 now.
+/PAWN: Isn't there anything I can do?
+/TALKING HEAD: Aren't you familiar with our criteria?
+/TALKING HEAD: You're lucky I'm in good mood today.
+/TALKING HEAD: It's possible to inflate your XP by doing quests for individuals of LV 50 or more.
+/TALKING HEAD: From what I gathered you need 500 more XP to advance your Life Value.
+/TALKING HEAD: XP gain per quest can be found in the documentation I gave you.
+$CALL tvguy_change_pose
+- ASK FOR QUESTS
+	/TALKING HEAD: Most absolutely not.
+	/TALKING HEAD: That would be bribery and an offense against my esteemed position.
+	- INQUIRE FURTHER
+		/PAWN: I've heard you accept favors.
+		/TALKING HEAD: That's a lie.
+		/TALKING HEAD: If I were to theoretically ever accept any deal...
+		/TALKING HEAD: It would theoretically not be from someone like you.
+		$INDJUMP 2 105
+	- OKAY
+		$INDJUMP 2 105
+	$ENDCHOICE
+- FIND SOMEONE ELSE
+	$INDJUMP 1 120
+$ENDCHOICE
+/PAWN: Thank you for your help, sir!
+$CALL tvguy_change_pose
+/TALKING HEAD: There's one more thing you have to know.
+/TALKING HEAD: We're closing our application in 30 Time.
+/TALKING HEAD: You need to hurry.
+/TALKING HEAD: Do what you have to do.
+//GOT 10 XP FOR: CONVERSING WITH AN ESTEEMED OFFICIAL
+
+$END

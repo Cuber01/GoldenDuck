@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dbfyuhwry5fmt"
-path="res://.godot/imported/office-stamp.wav-c23cac12e190a36f2a5f8994b3c49f64.sample"
+path="res://.godot/imported/stamp.wav-909776625b5a45ca44893c750b685455.sample"
 
 [deps]
 
-source_file="res://assets/sounds/office-stamp.wav"
-dest_files=["res://.godot/imported/office-stamp.wav-c23cac12e190a36f2a5f8994b3c49f64.sample"]
+source_file="res://assets/sounds/stamp.wav"
+dest_files=["res://.godot/imported/stamp.wav-909776625b5a45ca44893c750b685455.sample"]
 
 [params]
 

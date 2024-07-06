@@ -6,15 +6,30 @@ extends Node2D
 @onready var NPCLabel = $NPCLabel
 
 var text_index: int = 0
-var max_text_index:int = 0
+var max_text_index: int = 0
 var dialogue_text: String = ""
 
 var choices_menu: ChoicesMenu = null
 var enter_to_continue: bool = true
 
+var current_chapter: int = -1
+var chapters: Array[String] = [
+	"intro",
+	"talking_head_1",
+	"streets",
+	"grandma",
+	"talking_head_2"
+	] 
+
 func _ready():
 	DI.reset($SceneryManager)
-	DI.tokens = Parser.prepare_file("res://dialogues/intro.txt")
+	next_chapter()
+	
+func next_chapter():
+	current_chapter += 1
+	DI.reset($SceneryManager)
+	DI.tokens = Parser.prepare_file("res://dialogues/" + chapters[current_chapter] + ".txt")
+	go_further()
 
 func _process(delta):
 	if enter_to_continue and Input.is_action_just_pressed("ui_accept"):
@@ -35,8 +50,7 @@ func go_further():
 		print("err")
 
 func end_dialogue():
-	print("You win!")
-	enter_to_continue = false
+	next_chapter()
 
 func choice_menu(choices: Array):
 	DialogueLabel.text = ""

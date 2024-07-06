@@ -39,6 +39,8 @@ class Token:
 			return "[CALL " + str(line) + "]"
 
 func prepare_file(filepath: String):
+	tokens = []
+	line_index = 0
 	var text: String = FileAccess.open(filepath, FileAccess.READ).get_as_text()
 	lines = text.replace("\n", " \n").split("\n", true)
 	return parse_file()
@@ -130,15 +132,13 @@ func parse_file():
 					
 					var args = []
 					var current_arg = ""
-					while i > len(line):
+					while i < len(line)-1:
 						i += 1
 						if ch == " ":
 							args.append(current_arg)
 						else:
 							current_arg += ch
-						
-					
-					args.append(current_arg)
+							
 					emit_token(TokenType.CALL)
 					emit_token(func_name)
 					emit_token(len(args), true)

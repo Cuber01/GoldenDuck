@@ -1,74 +1,14 @@
-/TALKING HEAD: Nothing in life is guaranteed.
+$CALL play_sound shiny.mp3
 
-$CALL transition_fade_in
+/PAWN: 13 years of studying, 13 years of hard work just for this moment.
+/PAWN: It's my only chance of getting the Golden Duck.
+/PAWN: Without it, I'll never be content.
 
-- DOES IT ALWAYS HELP?
-	/TALKING HEAD: We have to take into account your reading skills,
-	rivals, records, the current attitudes in the market...
-	/PAWN: Oh yes, of course.
-	$JUMP 2
-- READ IT
-	//You start slowly going through the pile.
-	//As you place your fingers to move on to the next page, you briefly feel the paper's surface. 
-	//It's the driest material you've ever touched.
+$CALL duck_disappear
 
-	//CHAPTER 1: PREAMBLE
-	
-	//Head is eyeing you with a poker face.
-	//As you see there's no end in sight, you start skimming through at a faster pace.
-	
-	//CHAPTER 2: DETAILED PREAMBLE
-	
-	//The text bores you to death. And you still haven't learned anything.
-	//The man continues staring at you, menacingly.
-	
-	//CHAPTER 3: LEGAL JUSTIFICATION
-	
-	//You hear someone mumble. Are they getting impatient?
-	//You immdiatelly fall into pressure, and start scrolling through the pages at a breakneck pace.
-	
-	//CHAPTER 4: FACTUAL JUSTIFICATION
-	CHAPTER 5: APPLIED CONDITIONS
-	CHAPTER 6: LESSER CRITERIA
-	//CHAPTER 8: ETHICAL CRITERIA
-	CHAPTER 9: CONCLUSION
-	CHAPTER 10: COMMENTARY
-	
-	/PAWN: I'm finished!
-	/TALKING HEAD: Excellent!
-	$JUMP 50
-- NO NEED
-	/TALKING HEAD: Erm... Are you sure?
-	//Talking Head seems genuinely confused.
-	- YES
-		/TALKING HEAD: If you say so.
-		//You sense disgust in their voice.
-		$JUMP 50
-	- NO
-		/TALKING HEAD: Read it, then.
-		$JUMP 2
-	$ENDCHOICE
-$ENDCHOICE
-/TALKING HEAD: Since you are familiar with our criteria, 
-we can start your evaluation.
+//Don't fuck this up.
 
-//This is it. This is what you've come here for from the very beginning.
-
-/TALKING HEAD: Unfortunately your application has been rejected.
-
-//Shit.
-
-/TALKING HEAD: It's nothing personal. You just weren't good enough.
-/TALKING HEAD: As you know, our system chooses the best candidates based on your Life Value, LV for short.
-/TALKING HEAD: Which, in turn, can be increased by getting relevant Experience Points — XP.
-/TALKING HEAD: Anything that doesn't give you Experience is, by definition, worthless.
-/TALKING HEAD: If you spent more time doing what's important then perhaps we wouldn't be having this conversation.
-
-//You try to pick up your last pieces of dignity from the floor not to stutter.
-
-/PAWN: But, sir. I have 22 LV. The needed limit was 21 when I checked yesterday.
-/TALKING HEAD: Oh, you're right. We were forced to decrease the number of candidates due to the Everything Crisis.
-	This meant increasing the required LV as well. It's 23 now.
-/PAWN: Isn't there anything I can do?
+$CALL transition_fade_out
+$CALL stop_playing_sound
 
 $END

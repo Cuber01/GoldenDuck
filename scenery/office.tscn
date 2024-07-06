@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgci7um3g3uso"]
+[gd_scene load_steps=6 format=3 uid="uid://dgci7um3g3uso"]
 
-[ext_resource type="Script" path="res://scenery/office.gd" id="1_bqv1b"]
 [ext_resource type="Texture2D" uid="uid://dfqm6ybj1v6sm" path="res://assets/office.png" id="1_hscym"]
 [ext_resource type="Texture2D" uid="uid://dchnuqhs0l8so" path="res://assets/tv-man.png" id="2_6v41x"]
 [ext_resource type="Texture2D" uid="uid://dptdceixq0oe0" path="res://assets/tv-man-pointing-upwards.png" id="3_57bfb"]
@@ -26,7 +25,6 @@ animations = [{
 }]
 
 [node name="Office" type="Node2D"]
-script = ExtResource("1_bqv1b")
 
 [node name="Office" type="Sprite2D" parent="."]
 position = Vector2(101, 101)

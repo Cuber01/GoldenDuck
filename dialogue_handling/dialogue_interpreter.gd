@@ -40,8 +40,9 @@ func reset(SceneryManager: BuiltinLib):
 	last_npc = ""
 	indentation_level = 0
 	current_choice_index = 0
-	tokens = []
+	tokens = [null]
 	choice_trees = [null,null,null,null,null,null,null,null,null,null]
+	i = 0
 	
 	functions = SceneryManager
 
@@ -50,7 +51,7 @@ func get_next_dialogue() -> DialogueRV:
 	var rv: DialogueRV = DialogueRV.new()
 	
 	token = tokens[i]
-	while i < len(tokens)-1:
+	while i < len(tokens):
 		line = token.line
 		
 		if token.type == DP.TokenType.INDENT:
@@ -110,7 +111,7 @@ func get_next_dialogue() -> DialogueRV:
 				args.append(next())
 			
 			var method = Callable(functions, func_name)
-			if len(args) > 1:
+			if len(args) > 0:
 				method.call(args)
 			else:
 				method.call()

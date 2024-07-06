@@ -1,12 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://djk14je0vupb"]
+[gd_scene load_steps=6 format=3 uid="uid://djk14je0vupb"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_nevx3"]
 [ext_resource type="PackedScene" uid="uid://dgejj8lmsl7lw" path="res://scenery/item.tscn" id="3_5ttt4"]
 [ext_resource type="PackedScene" uid="uid://ccbrlfnt5yvx8" path="res://scenery/scenery_manager.tscn" id="3_wwq8o"]
 [ext_resource type="FontFile" uid="uid://bltlmx5euowoc" path="res://assets/Silver.ttf" id="4_jpoeh"]
+[ext_resource type="PackedScene" uid="uid://dgci7um3g3uso" path="res://scenery/office.tscn" id="5_4rni2"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nevx3")
+
+[node name="SceneryManager" parent="." instance=ExtResource("3_wwq8o")]
+position = Vector2(10, 10)
+
+[node name="Item" parent="SceneryManager" instance=ExtResource("3_5ttt4")]
+position = Vector2(100, 100)
+
+[node name="Office" parent="SceneryManager" instance=ExtResource("5_4rni2")]
 
 [node name="DialogueLabel" type="RichTextLabel" parent="."]
 offset_left = 13.0
@@ -15,18 +24,14 @@ offset_right = 209.0
 offset_bottom = 265.0
 theme_override_fonts/normal_font = ExtResource("4_jpoeh")
 theme_override_font_sizes/normal_font_size = 16
-text = "
-"
+fit_content = true
+scroll_active = false
 
 [node name="NPCLabel" type="RichTextLabel" parent="."]
+z_index = 2
 offset_left = 9.0
 offset_top = 202.0
 offset_right = 205.0
 offset_bottom = 242.0
 theme_override_fonts/normal_font = ExtResource("4_jpoeh")
 theme_override_font_sizes/normal_font_size = 16
-
-[node name="SceneryManager" parent="." instance=ExtResource("3_wwq8o")]
-
-[node name="Item" parent="SceneryManager" instance=ExtResource("3_5ttt4")]
-position = Vector2(70, 78)
