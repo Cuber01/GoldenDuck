@@ -15,6 +15,7 @@ position = Vector2(10, 10)
 
 [node name="TimeLabel" type="RichTextLabel" parent="SceneryManager"]
 visible = false
+z_index = 5
 offset_left = 213.0
 offset_top = 18.0
 offset_right = 409.0
@@ -27,6 +28,7 @@ scroll_active = false
 
 [node name="XPLabel" type="RichTextLabel" parent="SceneryManager"]
 visible = false
+z_index = 5
 offset_left = 213.0
 offset_right = 409.0
 offset_bottom = 40.0
@@ -38,6 +40,7 @@ scroll_active = false
 
 [node name="NuclearLabel" type="RichTextLabel" parent="SceneryManager"]
 visible = false
+z_index = 5
 offset_left = 213.0
 offset_top = 57.0
 offset_right = 409.0

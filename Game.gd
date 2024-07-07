@@ -16,6 +16,8 @@ var enter_to_continue: bool = true
 var current_chapter: int = -1
 var chapters: Array[String] = [
 	"intro",
+	"talking_head_1",
+	"streets",
 	"grandma",
 	"talking_head_2"
 	] 

@@ -47,6 +47,7 @@ func reset(SceneryManager: BuiltinLib):
 	functions = SceneryManager
 
 func get_next_dialogue() -> DialogueRV:
+	print(tokens)
 	var rv: DialogueRV = DialogueRV.new()
 	
 	token = tokens[i]

@@ -29,8 +29,8 @@ func transition_fade_in():
 # external use only
 func transition_curtain(make_visible: Node2D, make_invisible: Node2D):
 	var tween = create_tween()
-	tween.tween_property(TransitionCurtain, "position", Vector2(0,0), 1.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(TransitionCurtain, "position", Vector2(400,0), 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE).set_delay(1)
+	tween.tween_property(TransitionCurtain, "position", Vector2(0,0), 0.75).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(TransitionCurtain, "position", Vector2(400,0), 1.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE).set_delay(0.5)
 	await tween.step_finished
 	if make_visible != null:
 		make_visible.visible = true
@@ -99,9 +99,19 @@ func play_sound(args):
 	audio.stream = load("res://assets/sounds/" + sound)
 	audio.play()
 
+func play_background(args):
+	var sound: String = args[0]
+	$BackgroundAudioPlayer.volume_db = 0
+	$BackgroundAudioPlayer.stream = load("res://assets/sounds/" + sound)
+	$BackgroundAudioPlayer.play()
+
 func stop_playing_sound():
 	var tween = create_tween()
 	tween.tween_property(audio, "volume_db", -80, 4)
+
+func stop_background_sound():
+	var tween = create_tween()
+	tween.tween_property($BackgroundAudioPlayer, "volume_db", -80, 4)
 
 func show_xp():
 	XPLabel.visible = true
