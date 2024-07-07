@@ -47,11 +47,11 @@ func reset(SceneryManager: BuiltinLib):
 	functions = SceneryManager
 
 func get_next_dialogue() -> DialogueRV:
-	print(tokens)
 	var rv: DialogueRV = DialogueRV.new()
 	
 	token = tokens[i]
 	while i < len(tokens):
+	
 		line = token.line
 		
 		if token.type == DP.TokenType.INDENT:

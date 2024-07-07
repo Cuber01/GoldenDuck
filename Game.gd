@@ -2,8 +2,9 @@ extends Node2D
 
 @onready var Parser = DP.new()
 @onready var DI: DialogueInterpreter = DialogueInterpreter.new()
-@onready var DialogueLabel = $DialogueLabel
-@onready var NPCLabel = $NPCLabel
+@onready var DialogueLabel := $DialogueLabel
+@onready var NPCLabel := $NPCLabel
+@onready var SceneryManager := $SceneryManager
 
 var text_index: int = 0
 var max_text_index: int = 0
@@ -15,18 +16,24 @@ var enter_to_continue: bool = true
 var current_chapter: int = -1
 var chapters: Array[String] = [
 	"intro",
-	"talking_head_1",
-	"streets",
 	"grandma",
 	"talking_head_2"
 	] 
 
 func _ready():
-	DI.reset($SceneryManager)
+	DI.reset(SceneryManager)
 	next_chapter()
 	
 func next_chapter():
 	current_chapter += 1
+	
+	if current_chapter == 2:
+		SceneryManager.transition_curtain($SceneryManager/Street, $SceneryManager/Office)
+		SceneryManager.play_sound(["footsteps.wav"])
+	elif current_chapter == 3:
+		SceneryManager.transition_curtain($SceneryManager/Street/Grandma, null)
+		SceneryManager.play_sound(["footsteps.wav"])
+	
 	DI.reset($SceneryManager)
 	DI.tokens = Parser.prepare_file("res://dialogues/" + chapters[current_chapter] + ".txt")
 	go_further()

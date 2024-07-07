@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://tigkkacwsg6d"]
+[gd_scene load_steps=3 format=3 uid="uid://tigkkacwsg6d"]
 
-[ext_resource type="Script" path="res://scenery/street.gd" id="1_brnng"]
 [ext_resource type="Texture2D" uid="uid://pg1vo38rhc04" path="res://assets/street.png" id="1_pqhbi"]
 [ext_resource type="Texture2D" uid="uid://cf3hnlpp8b83" path="res://assets/grandma.png" id="2_b26fb"]
 
 [node name="Street" type="Node2D"]
-script = ExtResource("1_brnng")
 
 [node name="City" type="Sprite2D" parent="."]
+z_as_relative = false
 position = Vector2(100, 100)
 texture = ExtResource("1_pqhbi")
 
 [node name="Grandma" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(100, 132)
 texture = ExtResource("2_b26fb")

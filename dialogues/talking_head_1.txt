@@ -5,7 +5,7 @@
 $CALL spawn_item documentation
 $CALL play_sound slam.wav
 
-//You see as the man slams a gargantuan pile of papers in front of you.
+//The man slams a gargantuan pile of papers in front of you.
 
 /TALKING HEAD (LV81): This is our criteria.
 
@@ -56,7 +56,7 @@ $CALL tvguy_change_pose
 - NO NEED
 	$CALL tvguy_change_pose
 	/TALKING HEAD (LV81): Erm... Are you sure?
-	//TALKING HEAD (LV81) seems genuinely confused.
+	//TALKING HEAD seems genuinely confused.
 	- YES
 		/TALKING HEAD (LV81): If you say so.
 		//You sense disgust in their voice.
@@ -68,7 +68,7 @@ $CALL tvguy_change_pose
 		$INDJUMP 2 19
 	$ENDCHOICE
 $ENDCHOICE
-/TALKING HEAD (LV81): Since you are familiar with our criteria, we can start your evaluation.
+/TALKING HEAD (LV81): Since you are familiar with our criteria, we can start the evaluation.
 
 //This is it. This is what you've come here for from the very beginning.
 
@@ -126,4 +126,5 @@ $CALL tvguy_change_pose
 /TALKING HEAD (LV81): Do what you have to do.
 $CALL gain_xp 10
 //GOT 10 XP FOR: CONVERSING WITH AN ESTEEMED OFFICIAL
+
 $END

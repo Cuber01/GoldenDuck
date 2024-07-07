@@ -14,6 +14,7 @@ var xp := 500
 
 const ITEM_SCENE = preload("res://scenery/item.tscn")
 const DOCUMENTATION_TEXTURE = preload("res://assets/documentation.png")
+const NEWSPAPER_TEXTURE = preload("res://assets/newspaper.png")
 
 var initialized = false
 
@@ -25,11 +26,19 @@ func transition_fade_in():
 	var tween = create_tween()
 	tween.tween_property(TransitionFade, "color", Color(0,0,0,1), 2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 
-func transition_curtain():
+# external use only
+func transition_curtain(make_visible: Node2D, make_invisible: Node2D):
 	var tween = create_tween()
 	tween.tween_property(TransitionCurtain, "position", Vector2(0,0), 1.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(TransitionCurtain, "position", Vector2(200,0), 1.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE).set_delay(1)
-	TransitionCurtain.position = Vector2(-200, 0)
+	tween.tween_property(TransitionCurtain, "position", Vector2(400,0), 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE).set_delay(1)
+	await tween.step_finished
+	if make_visible != null:
+		make_visible.visible = true
+	if make_invisible != null:
+		make_invisible.visible = false
+	
+	await tween.finished
+	TransitionCurtain.position = Vector2(-201, 0)
 
 func tvguy_change_pose():
 	var sprite: AnimatedSprite2D = $Office/TVGuy
@@ -76,7 +85,7 @@ func spawn_item(args):
 	if item == "documentation":
 		item_scn.texture = DOCUMENTATION_TEXTURE
 	elif item == "newspaper":
-		pass
+		item_scn.texture = NEWSPAPER_TEXTURE
 		
 	item_scn.position = Vector2(100, -100)
 	item_handle = item_scn
@@ -96,6 +105,9 @@ func stop_playing_sound():
 
 func show_xp():
 	XPLabel.visible = true
+	
+func show_nuclear():
+	NuclearLabel.visible = true
 
 func gain_xp(args):
 	xp += int(args[0])

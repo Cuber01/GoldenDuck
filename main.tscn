@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://djk14je0vupb"]
+[gd_scene load_steps=7 format=3 uid="uid://djk14je0vupb"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_nevx3"]
 [ext_resource type="PackedScene" uid="uid://dgejj8lmsl7lw" path="res://scenery/item.tscn" id="3_5ttt4"]
 [ext_resource type="PackedScene" uid="uid://ccbrlfnt5yvx8" path="res://scenery/scenery_manager.tscn" id="3_wwq8o"]
 [ext_resource type="FontFile" uid="uid://bltlmx5euowoc" path="res://assets/Silver.ttf" id="4_jpoeh"]
 [ext_resource type="PackedScene" uid="uid://dgci7um3g3uso" path="res://scenery/office.tscn" id="5_4rni2"]
+[ext_resource type="PackedScene" uid="uid://tigkkacwsg6d" path="res://scenery/street.tscn" id="6_d88iy"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nevx3")
@@ -49,9 +50,13 @@ fit_content = true
 scroll_active = false
 
 [node name="Item" parent="SceneryManager" instance=ExtResource("3_5ttt4")]
+z_index = 3
 position = Vector2(100, 100)
 
 [node name="Office" parent="SceneryManager" instance=ExtResource("5_4rni2")]
+
+[node name="Street" parent="SceneryManager" instance=ExtResource("6_d88iy")]
+visible = false
 
 [node name="DialogueLabel" type="RichTextLabel" parent="."]
 offset_left = 13.0
@@ -64,7 +69,7 @@ fit_content = true
 scroll_active = false
 
 [node name="NPCLabel" type="RichTextLabel" parent="."]
-z_index = 2
+z_index = 3
 offset_left = 9.0
 offset_top = 202.0
 offset_right = 205.0

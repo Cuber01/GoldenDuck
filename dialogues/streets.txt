@@ -1,0 +1,41 @@
+
+
+//You're out on the streets. 
+//Roaring cars ride through the Capital and dozens of people go places.
+//It's time to find some quests.
+- LIGHTS
+	//As you lift your head upwards you're instantly blinded by the nearest lamp.
+	//In the Capital, lights are always turned on.
+	//...
+	//You were in the slums once. It's actually dark there during the night. 
+	//The mere thought of living there one day instantly terrifies you. 
+	//You must get the Golden Duck. 
+	$INDJUMP 1 6
+- STREET
+	//Eight lanes. Improves commerce!
+	$INDJUMP 1 6
+- NEWSPAPER
+	$CALL spawn_item newspaper
+	//There's a week old newspaper on the ground.
+	//PICKED UP: Soaked newspaper
+	$CALL item_pickup
+	//Two headlines catch your eye.
+	//THE EVERYTHING CRISIS: 20 YEAR ANNIVERSARY and NUCLEAR APOCALYPSE: CLOSER THAN EVER BEFORE?
+	$CALL show_nuclear
+	//As you skim them through, it turns out that due to recent geopolitical developments there's a war on the horizon.
+	//That would jeopardize your efforts of getting the Golden Duck. 
+	//Coincidentally you can do absolutely nothing about it.
+	//Unfortunate.
+	$INDJUMP 1 6
+- PEOPLE
+	//Bystanders seem to be in a hurry.
+	//You look for someone high LV enough to gain XP by helping them.
+	//Sadly it seems like everyone nearby is a low LV noob like yourself.
+	//Until... there it is!
+	//An elder woman with Life Value of 51 stands near the road.
+	- GRANDMA
+		$END
+	- RETURN
+		$INDJUMP 2 6
+	$ENDCHOICE
+$ENDCHOICE

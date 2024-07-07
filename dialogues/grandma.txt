@@ -1,0 +1,55 @@
+/GRANDMA: Hello dearie. Would you like to help an old lady?
+- HELP GRANDMA
+	/PAWN: Yes ma'am. What's the problem?
+	/GRANDMA: You see, I'd like to cross this street but I'm afraid I simply don't have the strength in me anymore.
+	/GRANDMA: Could you please take my groceries and hold me by my arm while we go through?
+	//You do what is asked of you and help the lady cross the street.
+	/GRANDMA: You are truly a wonderful young man. Thank you.
+	//GOT 100 XP FOR: HELPING GRANDMA
+	//Damn, that's not enough.
+- GIVE UP
+	$END
+$ENDCHOICE
+
+- HELP GRANDMA 2
+	//You grab her by the arm.
+	/GRANDMA: What are you doing, dearie? We're on the right side of the road.
+	//Despite Grandma's objections, you pull her through the eight lanes of the street.
+	/GRANDMA: Huff puff.
+	/GRANDMA: I need to rest now. 
+	/GRANDMA: I'll search for another way to get through later.
+	//GOT 100 XP FOR: HELPING GRANDMA
+	//Still not enough.
+	$INDJUMP 1 28
+- GIVE UP
+	$END
+$ENDCHOICE
+	
+- HELP GRANDMA 
+	//You help grandma.
+	/GRANDMA: No, please, it's fine.
+	//She's trying to oppose you, but can't stand against your strength.
+	//Bystanders ignore you.
+	//You quickly get her through the street, barely avoiding one of the speeding cars.
+	/GRANDMA: Yes, thank you. Now leave me be, please.
+	//Grandma takes deep breaths. She's very tired.
+	//GOT 100 XP FOR: HELPING GRANDMA
+	//You're getting close.
+- GIVE UP
+	$END
+$ENDCHOICE
+	
+- HELP GRANDMA 
+	//You help grandma. She tries to unhelp herself. 
+	//You help grandma.
+	//GOT 100 XP FOR: HELPING GRANDMA
+	$CALL grandma_fall
+	//As you enter the sidewalk, she falls on the ground.
+	/PAWN: Fuck.
+	//There's no way you can find someone else to help. You don't have time.
+	//Maybe if you return to Talking Head you can still find a way to get the remaining XP.
+	//There's still hope!
+	$END
+- GIVE UP
+	$END
+$ENDCHOICE
