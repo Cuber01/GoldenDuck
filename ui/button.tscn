@@ -1,21 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://citbjsmrsmef4"]
+[gd_scene load_steps=6 format=3 uid="uid://citbjsmrsmef4"]
 
 [ext_resource type="FontFile" uid="uid://bltlmx5euowoc" path="res://assets/Silver.ttf" id="1_ko3cd"]
 [ext_resource type="Script" path="res://ui/button.gd" id="2_83255"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yanwr"]
+[sub_resource type="FontVariation" id="FontVariation_4fd2d"]
+base_font = ExtResource("1_ko3cd")
+spacing_bottom = -4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0emg1"]
+content_margin_left = 4.0
 bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7j0o"]
+content_margin_left = 8.0
 bg_color = Color(1, 0.317647, 0.427451, 1)
 
 [node name="Button" type="Button"]
 offset_right = 41.0
 offset_bottom = 19.0
-theme_override_fonts/font = ExtResource("1_ko3cd")
+theme_override_fonts/font = SubResource("FontVariation_4fd2d")
 theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_yanwr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_p7j0o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0emg1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0emg1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p7j0o")
+flat = true
+alignment = 0
 script = ExtResource("2_83255")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

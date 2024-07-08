@@ -1,5 +1,5 @@
 class_name ChoicesMenu
-extends BoxContainer
+extends Control
 
 const MY_SCENE = preload("res://ui/choices_menu.tscn")
 const BUTTON_OFFSET: int = 10
@@ -24,8 +24,8 @@ func _ready():
 		i += 1
 	
 	for btn in buttons:
-		add_child(btn)
+		btn.set_focus_mode(Control.FOCUS_ALL)
+		$MarginContainer/VBoxContainer.add_child(btn)
 		btn.connect("choice_taken", onChoice)
-	
-	set_focus_mode(Control.FOCUS_CLICK)
-	grab_focus.call_deferred()
+		
+	buttons[0].grab_focus.call_deferred()

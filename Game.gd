@@ -64,7 +64,7 @@ func end_dialogue():
 func choice_menu(choices: Array):
 	DialogueLabel.text = ""
 	NPCLabel.text = ""
-	choices_menu = ChoicesMenu.init(Vector2(13, 225), choices, _on_choice_taken)
+	choices_menu = ChoicesMenu.init(Vector2(10, 225), choices, _on_choice_taken)
 	enter_to_continue = false
 	add_child(choices_menu)
 

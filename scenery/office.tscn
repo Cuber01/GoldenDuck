@@ -27,7 +27,7 @@ animations = [{
 [node name="Office" type="Node2D"]
 
 [node name="Office" type="Sprite2D" parent="."]
-position = Vector2(101, 101)
+position = Vector2(100, 100)
 texture = ExtResource("1_hscym")
 
 [node name="TVGuy" type="AnimatedSprite2D" parent="."]
@@ -35,5 +35,5 @@ position = Vector2(65, 75)
 sprite_frames = SubResource("SpriteFrames_bof3k")
 
 [node name="Desk" type="Sprite2D" parent="."]
-position = Vector2(101, 100)
+position = Vector2(100, 100)
 texture = ExtResource("4_tkvun")
