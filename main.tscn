@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djk14je0vupb"]
+[gd_scene load_steps=9 format=3 uid="uid://djk14je0vupb"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_nevx3"]
 [ext_resource type="PackedScene" uid="uid://dgejj8lmsl7lw" path="res://scenery/item.tscn" id="3_5ttt4"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://bltlmx5euowoc" path="res://assets/Silver.ttf" id="4_jpoeh"]
 [ext_resource type="PackedScene" uid="uid://dgci7um3g3uso" path="res://scenery/office.tscn" id="5_4rni2"]
 [ext_resource type="PackedScene" uid="uid://tigkkacwsg6d" path="res://scenery/street.tscn" id="6_d88iy"]
+[ext_resource type="PackedScene" uid="uid://c3ya2oogyb5v1" path="res://scenery/office2.tscn" id="7_6glol"]
+[ext_resource type="Texture2D" uid="uid://bby7g4a14ftgu" path="res://assets/tv-man-hurt.png" id="8_524j2"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nevx3")
@@ -61,6 +63,14 @@ position = Vector2(100, 100)
 [node name="Street" parent="SceneryManager" instance=ExtResource("6_d88iy")]
 visible = false
 
+[node name="OfficeOutro" parent="SceneryManager" instance=ExtResource("7_6glol")]
+visible = false
+
+[node name="TVGuyHurt" type="Sprite2D" parent="SceneryManager"]
+visible = false
+position = Vector2(84, 103)
+texture = ExtResource("8_524j2")
+
 [node name="DialogueLabel" type="RichTextLabel" parent="."]
 offset_left = 13.0
 offset_top = 225.0
@@ -71,11 +81,11 @@ theme_override_font_sizes/normal_font_size = 16
 fit_content = true
 scroll_active = false
 
-[node name="NPCLabel" type="RichTextLabel" parent="."]
+[node name="NPCLabel" type="Label" parent="."]
 z_index = 3
 offset_left = 9.0
 offset_top = 202.0
-offset_right = 205.0
-offset_bottom = 242.0
-theme_override_fonts/normal_font = ExtResource("4_jpoeh")
-theme_override_font_sizes/normal_font_size = 16
+offset_right = 119.0
+offset_bottom = 221.0
+theme_override_fonts/font = ExtResource("4_jpoeh")
+autowrap_mode = 1

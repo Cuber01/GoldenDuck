@@ -1,4 +1,4 @@
-$CALL play_sound shiny.mp3
+$CALL play_background shiny.mp3
 
 /PAWN: 13 years of studying, 13 years of hard work just for this moment.
 /PAWN: It's my only chance of getting the Golden Duck.
@@ -9,6 +9,6 @@ $CALL duck_disappear
 //Don't fuck this up.
 
 $CALL transition_fade_out
-$CALL stop_playing_sound
+$CALL stop_background_sound
 
 $END

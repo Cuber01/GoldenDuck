@@ -13,36 +13,45 @@ var dialogue_text: String = ""
 var choices_menu: ChoicesMenu = null
 var enter_to_continue: bool = true
 
-var current_chapter: int = -1
+var current_chapter: int = 0
 var chapters: Array[String] = [
 	"intro",
 	"talking_head_1",
 	"streets",
 	"grandma",
-	"talking_head_2"
+	"talking_head_2",
+	"give_up_end",
+	"murderer_end",
+	"winner_end"
 	] 
 
 func _ready():
 	DI.reset(SceneryManager)
-	next_chapter()
+	change_chapter(0)
 	
-func next_chapter():
-	current_chapter += 1
-	
-	if current_chapter == 2:
+func change_chapter(id):
+	if id == 2:
 		SceneryManager.transition_curtain($SceneryManager/Street, $SceneryManager/Office)
 		SceneryManager.play_sound(["footsteps.wav"])
-	elif current_chapter == 3:
+	elif id == 3:
 		SceneryManager.transition_curtain($SceneryManager/Street/Grandma, null)
 		SceneryManager.play_sound(["footsteps.wav"])
+	elif id == 4:
+		SceneryManager.transition_curtain($SceneryManager/Street, $SceneryManager/OfficeOutro)
+		SceneryManager.play_sound(["footsteps.wav"])
+	elif id == 6:
+		$SceneryManager/OfficeOutro.visible = false
+		$SceneryManager/TVGuyHurt.visible = true
 	
 	DI.reset($SceneryManager)
-	DI.tokens = Parser.prepare_file("res://dialogues/" + chapters[current_chapter] + ".txt")
+	DI.tokens = Parser.prepare_file("res://dialogues/" + chapters[id] + ".txt")
 	go_further()
 
 func _process(delta):
 	if enter_to_continue and Input.is_action_just_pressed("ui_accept"):
 		go_further()
+	elif Input.is_action_just_pressed("ui_undo"):
+		end_dialogue()
 	elif text_index < max_text_index:
 		text_index += 1
 		DialogueLabel.visible_characters = text_index
@@ -59,7 +68,8 @@ func go_further():
 		print("err")
 
 func end_dialogue():
-	next_chapter()
+	current_chapter += 1
+	change_chapter(current_chapter)
 
 func choice_menu(choices: Array):
 	DialogueLabel.text = ""

@@ -1,51 +1,49 @@
-
-
-/GRANDMA: Hello dearie. Would you like to help an old lady?
-- HELP GRANDMA
+/GRANDMA (LV 51): Hello dearie. Would you like to help an old lady?
+- HELP GRANDMA (LV 51)
 	/PAWN: Yes ma'am. What's the problem?
-	/GRANDMA: You see, I'd like to cross this street but I'm afraid I simply don't have the strength in me anymore.
-	/GRANDMA: Could you please take my groceries and hold me by my arm while we go through?
+	/GRANDMA (LV 51): You see, I'd like to cross this street but I'm afraid I simply don't have the strength in me anymore.
+	/GRANDMA (LV 51): Could you please take my groceries and hold me by my arm while we go through?
 	$CALL play_sound footsteps.wav
 	//You do what is asked of you and help the lady cross the street.
-	/GRANDMA: You are truly a wonderful young man. Thank you.
+	/GRANDMA (LV 51): You are truly a wonderful young man. Thank you.
 	$CALL gain_xp 100
-	//GOT 100 XP FOR: HELPING GRANDMA
+	//GOT 100 XP FOR: HELPING GRANDMA (LV 51)
 	//Damn, that's not enough.
-	- HELP GRANDMA AGAIN
+	- HELP GRANDMA (LV 51) AGAIN
 		//You grab her by the arm.
-		/GRANDMA: What are you doing, dearie? We're on the right side of the road.
+		/GRANDMA (LV 51): What are you doing, dearie? We're on the right side of the road.
 		$CALL play_sound footsteps.wav
 		//Despite Grandma's objections, you pull her through the eight lanes of the street.
-		/GRANDMA: Huff puff.
-		/GRANDMA: I need to rest now. 
-		/GRANDMA: I'll search for another way to get through later.
+		/GRANDMA (LV 51): Huff puff.
+		/GRANDMA (LV 51): I need to rest now. 
+		/GRANDMA (LV 51): I'll search for another way to get through later.
 		$CALL gain_xp 100
-		//GOT 100 XP FOR: HELPING GRANDMA
+		//GOT 100 XP FOR: HELPING GRANDMA (LV 51)
 		//Still not enough.
 		
-		- HELP GRANDMA AGAIN
+		- HELP GRANDMA (LV 51) AGAIN
 			//You help grandma.
-			/GRANDMA: No, please, it's fine.
+			/GRANDMA (LV 51): No, please, it's fine.
 			//She's trying to oppose you, but can't stand against your strength.
 			//Bystanders ignore you.
 			$CALL play_sound footsteps.wav
 			//You quickly get her through the street, barely avoiding one of the speeding cars.
-			/GRANDMA: Yes, thank you. Now leave me be, please.
+			/GRANDMA (LV 51): Yes, thank you. Now leave me be, please.
 			//Grandma takes deep breaths. She's very tired.
 			$CALL gain_xp 100
-			//GOT 100 XP FOR: HELPING GRANDMA
+			//GOT 100 XP FOR: HELPING GRANDMA (LV 51)
 			//You're getting close.
-			- HELP GRANDMA AGAIN
+			- HELP GRANDMA (LV 51) AGAIN
 				//You help grandma. She tries to unhelp herself. 
 				$CALL play_sound footsteps.wav
 				//You help grandma.
 				$CALL gain_xp 100
-				//GOT 100 XP FOR: HELPING GRANDMA
+				//GOT 100 XP FOR: HELPING GRANDMA (LV 51)
 				$CALL grandma_fall
 				$CALL play_sound grandma_falls.wav
 				//As you enter the sidewalk, she falls on the ground.
 				$CALL play_sound victory-fanfare.mp3
-				//GRANDMA HAS BEEN DEFEATED!
+				//GRANDMA (LV 51) HAS BEEN DEFEATED!
 				/PAWN: Fuck.
 				//There's no way you can find someone else to help. You don't have time.
 				//Maybe if you return to Talking Head you can still find a way to get the remaining XP.
@@ -53,14 +51,18 @@
 				$END
 				
 			- GIVE UP
-				$END
+				$CALL stop_background_sound
+				$CALL chapter 5
 			$ENDCHOICE
 		- GIVE UP
-			$END
+			$CALL stop_background_sound
+			$CALL chapter 5
 		$ENDCHOICE
 	- GIVE UP
-		$END
+		$CALL stop_background_sound
+		$CALL chapter 5
 	$ENDCHOICE
 - GIVE UP
-	$END
+	$CALL stop_background_sound
+	$CALL chapter 5
 $ENDCHOICE

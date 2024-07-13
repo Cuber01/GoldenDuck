@@ -1,0 +1,34 @@
+//You swing the axe. 
+$CALL play_sound glass-breaking.mp3
+$CALL transition_fade_out
+//Before you realize what happened, you see Talking Head taking his last breaths in a puddle of blood.
+/TALKING HEAD (LV 80): Why...
+/TALKING HEAD (LV 79): Ever since the start of this day I did nothing else than try help you.
+/TALKING HEAD (LV 78): Is this how you repay me?
+/TALKING HEAD (LV 77): Why. I need to know.
+/TALKING HEAD (LV 76): Why???
+
+- TO DEFEAT THE SYSTEM
+	PAWN: I was pissed off by your shitty criteria. 
+	PAWN: Ordering me around like a child and treating like a spreadsheet.
+	/TALKING HEAD (LV 75): Did you really think you could "defeat the system"?
+	/TALKING HEAD (LV 74): With what? An axe?
+	/TALKING HEAD: I am a pawn, just like you.
+	/TALKING HEAD: Why do you think I have a TV instead of a head?
+	/TALKING HEAD: I had it in me to do what was necessary. To climb the ladder, to get that sweet XP.
+	/TALKING HEAD: Everyone respected me. I was at the top.
+	/TALKING HEAD: And you fucked it all up.
+	/TALKING HEAD: ALL OF IT!
+	//THE END
+- TO DEFEAT YOU
+	PAWN: You're a professional hindrance in an ugly suit. Fuck you.
+	/TALKING HEAD (LV 75): I should've never even tried assisting you.
+	/TALKING HEAD (LV 81): I am an esteemed official. I am at the top of the world.
+	/TALKING HEAD (LV 81): You should have respect for me and my position.
+	/TALKING HEAD (LV 81): Why do you think I have a TV instead of a head?
+	/TALKING HEAD (LV 81): I had it in me to do what was necessary. To climb the ladder, to get that sweet XP.
+	/TALKING HEAD (LV 81): I had everything.
+	/TALKING HEAD (LV 81): And you fucked it all up.
+	/TALKING HEAD (LV 81): ALL OF IT!
+	//THE END
+$ENDCHOICE

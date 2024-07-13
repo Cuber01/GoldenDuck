@@ -1,0 +1,26 @@
+/TALKING HEAD (LV 81): Yes?
+/TALKING HEAD (LV 81): How did it go?
+/PAWN: I need 90 more XP. Please, is there anything I can do?
+/TALKING HEAD (LV 81): Well, there's ONE thing.
+//The man points to an axe standing in the corner of the room.
+/TALKING HEAD (LV 81): I keep it here for special occasions.
+/TALKING HEAD (LV 81): According to point 24 recruits gain additional 250 Experience Points per each missing limb.
+/TALKING HEAD (LV 81): It's to help disadvantaged families.
+$CALL tvguy_change_pose
+/TALKING HEAD (LV 81): We live in an egalitarian society, after all.
+$CALL tvguy_change_pose
+/TALKING HEAD (LV 81): Do what you have to do.
+
+$CALL transition_fade_in
+$CALL spawn_item axe
+
+- CHOP OFF YOUR LEG
+	$CALL item_dissappear
+	$CALL chapter 7
+- ATTACK TALKING HEAD
+	$CALL item_dissappear
+	$CALL chapter 6
+- GIVE UP
+	$CALL item_dissappear
+	$CALL chapter 5
+$ENDCHOICE

@@ -1,0 +1,5 @@
+//You feel a horrible pain ripping through your nervous system.
+/TALKING HEAD: It's fine. 
+$CALL play_sound stamp.wav
+/TALKING HEAD: You've won.
+//THE END

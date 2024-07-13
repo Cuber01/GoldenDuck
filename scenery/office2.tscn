@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ya2oogyb5v1"]
+
+[ext_resource type="PackedScene" uid="uid://dgci7um3g3uso" path="res://scenery/office.tscn" id="1_q8pci"]
+
+[node name="Office" instance=ExtResource("1_q8pci")]
+
+[node name="TVGuy" parent="." index="1"]
+z_index = 1
+position = Vector2(101, 132)

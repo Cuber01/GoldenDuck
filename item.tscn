@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgejj8lmsl7lw"]
-
-[ext_resource type="Texture2D" uid="uid://bhmxsu406j3li" path="res://assets/golden-duck.png" id="1_wv8m6"]
-[ext_resource type="Script" path="res://Item.gd" id="2_lp1i7"]
-
-[node name="Item" type="Sprite2D"]
-texture = ExtResource("1_wv8m6")
-script = ExtResource("2_lp1i7")

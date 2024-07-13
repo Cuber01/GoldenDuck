@@ -1,3 +1,4 @@
+$CALL play_background office.mp3
 /TALKING HEAD (LV81): Welcome!
 /TALKING HEAD (LV81): I see you've come to see how we've reviewed your application.
 /TALKING HEAD (LV81): Give me just a moment.
@@ -20,7 +21,7 @@ $CALL tvguy_change_pose
 	/TALKING HEAD (LV81): Nothing in life is guaranteed.
 	/TALKING HEAD (LV81): We have to take into account your reading skills,
 	rivals, the current attitudes in the market...
-	$INDJUMP 1 19
+	$INDJUMP 1 20
 - READ IT
 	$CALL tvguy_change_pose
 	//You start slowly going through the pile.
@@ -52,7 +53,7 @@ $CALL tvguy_change_pose
 	
 	/PAWN: I'm finished!
 	/TALKING HEAD (LV81): Excellent!
-	$INDJUMP 1 71
+	$INDJUMP 1 72
 - NO NEED
 	$CALL tvguy_change_pose
 	/TALKING HEAD (LV81): Erm... Are you sure?
@@ -60,12 +61,12 @@ $CALL tvguy_change_pose
 	- YES
 		/TALKING HEAD (LV81): If you say so.
 		//You sense disgust in their voice.
-		$INDJUMP 2 71
+		$INDJUMP 2 72
 	- NO
 		$CALL tvguy_change_pose
 		//TALKING HEAD (LV81) lets out a sigh.
 		/TALKING HEAD (LV81): Read it, then.
-		$INDJUMP 2 19
+		$INDJUMP 2 20
 	$ENDCHOICE
 $ENDCHOICE
 /TALKING HEAD (LV81): Since you are familiar with our criteria, we can start the evaluation.
@@ -75,7 +76,7 @@ $ENDCHOICE
 /TALKING HEAD (LV81): Your application has been...
 
 $CALL play_sound stamp.wav
-
+$CALL stop_background_sound
 /TALKING HEAD (LV81): Rejected.
 
 //Shit.
@@ -97,6 +98,7 @@ $CALL tvguy_change_pose
 /TALKING HEAD (LV81): Oh, you're right. We were forced to decrease the number of candidates due to the Everything Crisis.
 /TALKING HEAD (LV81): This meant increasing the required LV as well. It's 23 now.
 /PAWN: Isn't there anything I can do?
+$CALL play_background office.mp3
 /TALKING HEAD (LV81): Aren't you familiar with our criteria?
 /TALKING HEAD (LV81): You're lucky I'm in good mood today.
 /TALKING HEAD (LV81): It's possible to inflate your XP by doing quests for individuals of LV 50 or more.
@@ -111,12 +113,12 @@ $CALL tvguy_change_pose
 		/TALKING HEAD (LV81): That's a lie.
 		/TALKING HEAD (LV81): If I were to theoretically ever accept any deal...
 		/TALKING HEAD (LV81): It would theoretically not be from someone like you.
-		$INDJUMP 2 106
+		$INDJUMP 2 108
 	- OKAY
-		$INDJUMP 2 106
+		$INDJUMP 2 108
 	$ENDCHOICE
 - FIND SOMEONE ELSE
-	$INDJUMP 1 121
+	$INDJUMP 1 123
 $ENDCHOICE
 /PAWN: Thank you for your help, sir!
 $CALL tvguy_change_pose
@@ -126,5 +128,5 @@ $CALL tvguy_change_pose
 /TALKING HEAD (LV81): Do what you have to do.
 $CALL gain_xp 10
 //GOT 10 XP FOR: CONVERSING WITH AN ESTEEMED OFFICIAL
-
+$CALL stop_background_sound
 $END
