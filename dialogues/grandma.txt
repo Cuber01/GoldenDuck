@@ -1,5 +1,5 @@
 /GRANDMA (LV 51): Hello dearie. Would you like to help an old lady?
-- HELP GRANDMA (LV 51)
+- HELP GRANDMA
 	/PAWN: Yes ma'am. What's the problem?
 	/GRANDMA (LV 51): You see, I'd like to cross this street but I'm afraid I simply don't have the strength in me anymore.
 	/GRANDMA (LV 51): Could you please take my groceries and hold me by my arm while we go through?
@@ -7,9 +7,9 @@
 	//You do what is asked of you and help the lady cross the street.
 	/GRANDMA (LV 51): You are truly a wonderful young man. Thank you.
 	$CALL gain_xp 100
-	//GOT 100 XP FOR: HELPING GRANDMA (LV 51)
+	//GOT 100 XP FOR: HELPING GRANDMA 
 	//Damn, that's not enough.
-	- HELP GRANDMA (LV 51) AGAIN
+	- HELP GRANDMA AGAIN
 		//You grab her by the arm.
 		/GRANDMA (LV 51): What are you doing, dearie? We're on the right side of the road.
 		$CALL play_sound footsteps.wav
@@ -18,10 +18,10 @@
 		/GRANDMA (LV 51): I need to rest now. 
 		/GRANDMA (LV 51): I'll search for another way to get through later.
 		$CALL gain_xp 100
-		//GOT 100 XP FOR: HELPING GRANDMA (LV 51)
+		//GOT 100 XP FOR: HELPING GRANDMA
 		//Still not enough.
 		
-		- HELP GRANDMA (LV 51) AGAIN
+		- HELP GRANDMA AGAIN
 			//You help grandma.
 			/GRANDMA (LV 51): No, please, it's fine.
 			//She's trying to oppose you, but can't stand against your strength.
@@ -31,14 +31,14 @@
 			/GRANDMA (LV 51): Yes, thank you. Now leave me be, please.
 			//Grandma takes deep breaths. She's very tired.
 			$CALL gain_xp 100
-			//GOT 100 XP FOR: HELPING GRANDMA (LV 51)
+			//GOT 100 XP FOR: HELPING GRANDMA
 			//You're getting close.
-			- HELP GRANDMA (LV 51) AGAIN
+			- HELP GRANDMA AGAIN
 				//You help grandma. She tries to unhelp herself. 
 				$CALL play_sound footsteps.wav
 				//You help grandma.
 				$CALL gain_xp 100
-				//GOT 100 XP FOR: HELPING GRANDMA (LV 51)
+				//GOT 100 XP FOR: HELPING GRANDMA
 				$CALL grandma_fall
 				$CALL play_sound grandma_falls.wav
 				//As you enter the sidewalk, she falls on the ground.
@@ -53,6 +53,7 @@
 			- GIVE UP
 				$CALL stop_background_sound
 				$CALL chapter 5
+				$END
 			$ENDCHOICE
 		- GIVE UP
 			$CALL stop_background_sound

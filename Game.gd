@@ -37,11 +37,15 @@ func change_chapter(id):
 		SceneryManager.transition_curtain($SceneryManager/Street/Grandma, null)
 		SceneryManager.play_sound(["footsteps.wav"])
 	elif id == 4:
-		SceneryManager.transition_curtain($SceneryManager/Street, $SceneryManager/OfficeOutro)
+		SceneryManager.transition_curtain($SceneryManager/OfficeOutro, $SceneryManager/Street)
 		SceneryManager.play_sound(["footsteps.wav"])
 	elif id == 6:
 		$SceneryManager/OfficeOutro.visible = false
 		$SceneryManager/TVGuyHurt.visible = true
+	elif current_chapter == 3 and id == 5:
+		SceneryManager.transition_fade_in()
+	
+	current_chapter = id
 	
 	DI.reset($SceneryManager)
 	DI.tokens = Parser.prepare_file("res://dialogues/" + chapters[id] + ".txt")
@@ -64,6 +68,8 @@ func go_further():
 		choice_menu(dialogue_info.content)
 	elif dialogue_info.type == DialogueInterpreter.ReturnType.END:
 		end_dialogue()
+	elif dialogue_info.type == DialogueInterpreter.ReturnType.CHANGED_CHAPTER:
+		pass
 	else:
 		print("err")
 

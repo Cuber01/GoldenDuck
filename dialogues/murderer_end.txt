@@ -9,8 +9,8 @@ $CALL transition_fade_out
 /TALKING HEAD (LV 76): Why???
 
 - TO DEFEAT THE SYSTEM
-	PAWN: I was pissed off by your shitty criteria. 
-	PAWN: Ordering me around like a child and treating like a spreadsheet.
+	/PAWN: I was pissed off by your shitty criteria. 
+	/PAWN: Ordering me around like a child and treating like a spreadsheet.
 	/TALKING HEAD (LV 75): Did you really think you could "defeat the system"?
 	/TALKING HEAD (LV 74): With what? An axe?
 	/TALKING HEAD: I am a pawn, just like you.
@@ -21,7 +21,7 @@ $CALL transition_fade_out
 	/TALKING HEAD: ALL OF IT!
 	//THE END
 - TO DEFEAT YOU
-	PAWN: You're a professional hindrance in an ugly suit. Fuck you.
+	/PAWN: You're a professional hindrance in an ugly suit. Fuck you.
 	/TALKING HEAD (LV 75): I should've never even tried assisting you.
 	/TALKING HEAD (LV 81): I am an esteemed official. I am at the top of the world.
 	/TALKING HEAD (LV 81): You should have respect for me and my position.

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://citbjsmrsmef4"]
+[gd_scene load_steps=7 format=3 uid="uid://citbjsmrsmef4"]
 
-[ext_resource type="FontFile" uid="uid://bltlmx5euowoc" path="res://assets/Silver.ttf" id="1_ko3cd"]
+[ext_resource type="FontFile" uid="uid://3wf2yogwfd4j" path="res://assets/Silva.tres" id="1_5b1bk"]
 [ext_resource type="Script" path="res://ui/button.gd" id="2_83255"]
+[ext_resource type="StyleBox" uid="uid://esbybbyyr0sl" path="res://assets/pink_stylebox.tres" id="2_sdmr0"]
 
 [sub_resource type="FontVariation" id="FontVariation_4fd2d"]
-base_font = ExtResource("1_ko3cd")
+base_font = ExtResource("1_5b1bk")
 spacing_bottom = -4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0emg1"]
@@ -23,7 +24,7 @@ offset_bottom = 19.0
 theme_override_fonts/font = SubResource("FontVariation_4fd2d")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_0emg1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0emg1")
+theme_override_styles/hover = ExtResource("2_sdmr0")
 theme_override_styles/focus = SubResource("StyleBoxFlat_p7j0o")
 flat = true
 alignment = 0

@@ -20,6 +20,7 @@ enum ReturnType {
 	DIALOGUE,
 	CHOICES,
 	END,
+	CHANGED_CHAPTER,
 	NONE
 }
 
@@ -27,6 +28,7 @@ var dialogue_line: String
 
 var token: Variant = null
 var line: int = 0
+var halt_interpreting := false
 
 var i: int = 0:
 	set(value):
@@ -43,12 +45,13 @@ func reset(SceneryManager: BuiltinLib):
 	tokens = [null]
 	choice_trees = [null,null,null,null,null,null,null,null,null,null]
 	i = 0
+	halt_interpreting = true
 	
 	functions = SceneryManager
 
 func get_next_dialogue() -> DialogueRV:
-	print(tokens)
 	var rv: DialogueRV = DialogueRV.new()
+	var do_return: bool = false
 	
 	token = tokens[i]
 	while i < len(tokens):
@@ -69,7 +72,7 @@ func get_next_dialogue() -> DialogueRV:
 		elif token.type == DP.TokenType.END:
 			rv.type = ReturnType.END
 			
-			return rv
+			do_return = true
 		elif token.type == DP.TokenType.CHARACTER:
 			var npc_name = next()
 			var dialogue_line: String
@@ -85,7 +88,7 @@ func get_next_dialogue() -> DialogueRV:
 			rv.content.append(dialogue_line)
 			rv.character_name = npc_name
 			rv.type = ReturnType.DIALOGUE
-			return rv
+			do_return = true
 		elif token.type == DP.TokenType.CHOICE:
 			var choice: String = next()
 			if choice_trees[current_choice_index] == null:
@@ -97,7 +100,7 @@ func get_next_dialogue() -> DialogueRV:
 			for c in choice_trees[current_choice_index]:
 				rv.content.append(c)
 			rv.type = ReturnType.CHOICES
-			return rv
+			do_return = true
 		elif token.type == DP.TokenType.INDENT_JUMP:
 			var indent_change = int(next())
 			var jump_to = int(next())
@@ -116,8 +119,15 @@ func get_next_dialogue() -> DialogueRV:
 				method.call(args)
 			else:
 				method.call()
-			
-		i += 1
+				
+			if func_name == "chapter":
+				rv.type = ReturnType.CHANGED_CHAPTER
+				do_return = true
+		
+		if do_return:
+			return rv
+		else:
+			i += 1
 	return null
 
 func jump(jump_to: int):
