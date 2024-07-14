@@ -5,6 +5,11 @@ extends Node2D
 @onready var DialogueLabel := $DialogueLabel
 @onready var NPCLabel := $NPCLabel
 @onready var SceneryManager := $SceneryManager
+@onready var TimeLabel := $SceneryManager/TimeLabel
+
+var timelabel_placeholder = "Time Left: %s"
+var timer_started := false
+var time_left := 60
 
 var text_index: int = 0
 var max_text_index: int = 0
@@ -53,7 +58,15 @@ func change_chapter(id):
 
 func _process(delta):
 	if enter_to_continue and Input.is_action_just_pressed("ui_accept"):
-		go_further()
+		if text_index < max_text_index:
+			text_index = max_text_index
+			DialogueLabel.visible_characters = text_index
+		else:
+			if timer_started:
+				time_left -= 1
+				TimeLabel.text = timelabel_placeholder % str(time_left)
+			
+			go_further()
 	elif Input.is_action_just_pressed("ui_undo"):
 		end_dialogue()
 	elif text_index < max_text_index:
@@ -68,10 +81,8 @@ func go_further():
 		choice_menu(dialogue_info.content)
 	elif dialogue_info.type == DialogueInterpreter.ReturnType.END:
 		end_dialogue()
-	elif dialogue_info.type == DialogueInterpreter.ReturnType.CHANGED_CHAPTER:
-		pass
 	else:
-		print("err")
+		pass
 
 func end_dialogue():
 	current_chapter += 1
@@ -96,6 +107,3 @@ func _on_choice_taken(id: String):
 	DI.choose(id)
 	go_further()
 	enter_to_continue = true
-	
-
-

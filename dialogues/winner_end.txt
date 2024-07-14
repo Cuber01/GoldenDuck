@@ -1,5 +1,9 @@
+$CALL play_sound scream.mp3
+$CALL gain_xp 250
 //You feel a horrible pain ripping through your nervous system.
 /TALKING HEAD: It's fine. 
 $CALL play_sound stamp.wav
 /TALKING HEAD: You've won.
+$CALL end
 //THE END
+$END

@@ -1,10 +1,12 @@
-//Dread and despair slowly fill your lungs. 
+//Dread and despair slowly fill your lungs.
+//You can't do this. It's too much.
 //You've failed. It was just as they said.
-//You just weren't good enough. 
+//You just aren't good enough. 
 //Were you born this way? Or maybe it was your fault all along?
 //Ultimately you'll never know.
 //What's sure is that you'll never get the Golden Duck.
 //The only thought that gives you some solace is that perhaps none of it really mattered.
 //That in the end, you'll die.
+$CALL end
 //THE END
 $END

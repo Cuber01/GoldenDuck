@@ -44,11 +44,11 @@ $CALL tvguy_change_pose
 	//Is he getting impatient?
 	//You immediatelly fall into pressure, and start scrolling through the pages at a breakneck pace.
 	
-	//CHAPTER 4: FACTUAL JUSTIFICATION
-	CHAPTER 5: APPLIED CONDITIONS
+	//CHAPTER 4: FACTUAL JUSTIFICATION,
+	CHAPTER 5: APPLIED CONDITIONS,
 	CHAPTER 6: LESSER CRITERIA
-	//CHAPTER 8: ETHICAL CRITERIA
-	CHAPTER 9: COMPLEX CONCLUSIONS
+	//CHAPTER 8: ETHICAL CRITERIA,
+	CHAPTER 9: COMPLEX CONCLUSIONS,
 	CHAPTER 10: SPECIAL COMMENTARY
 	
 	/PAWN: I'm finished!
@@ -57,14 +57,14 @@ $CALL tvguy_change_pose
 - NO NEED
 	$CALL tvguy_change_pose
 	/TALKING HEAD (LV 81): Erm... Are you sure?
-	//TALKING HEAD seems genuinely confused.
+	//Talking Head seems genuinely confused.
 	- YES
 		/TALKING HEAD (LV 81): If you say so.
 		//You sense disgust in their voice.
 		$INDJUMP 2 72
 	- NO
 		$CALL tvguy_change_pose
-		//TALKING HEAD (LV 81) lets out a sigh.
+		//Talking Head lets out a sigh.
 		/TALKING HEAD (LV 81): Read it, then.
 		$INDJUMP 2 20
 	$ENDCHOICE
@@ -98,32 +98,29 @@ $CALL tvguy_change_pose
 /TALKING HEAD (LV 81): Oh, you're right. We were forced to decrease the number of candidates due to the Everything Crisis.
 /TALKING HEAD (LV 81): This meant increasing the required LV as well. It's 23 now.
 /PAWN: Isn't there anything I can do?
-$CALL play_background office.mp3
 /TALKING HEAD (LV 81): Aren't you familiar with our criteria?
+$CALL play_background office.mp3
 /TALKING HEAD (LV 81): You're lucky I'm in good mood today.
-/TALKING HEAD (LV 81): It's possible to inflate your XP by doing quests for individuals of LV 50 or more.
+/TALKING HEAD (LV 81): It's possible to increase your XP by doing quests for individuals of LV 50 or more.
 /TALKING HEAD (LV 81): From what I gathered you need 500 more XP to advance your Life Value.
 /TALKING HEAD (LV 81): XP gain per quest can be found in the documentation I gave you.
 $CALL tvguy_change_pose
 - ASK FOR QUESTS
 	/TALKING HEAD (LV 81): Most absolutely not.
 	/TALKING HEAD (LV 81): That would be bribery and an offense against my esteemed position.
-	- INQUIRE FURTHER
-		/PAWN: I've heard you accept favors.
-		/TALKING HEAD (LV 81): That's a lie.
-		/TALKING HEAD (LV 81): If I were to theoretically ever accept any deal...
-		/TALKING HEAD (LV 81): It would theoretically not be from someone like you.
-		$INDJUMP 2 108
-	- OKAY
-		$INDJUMP 2 108
-	$ENDCHOICE
+	/PAWN: I've heard you accept favors.
+	/TALKING HEAD (LV 81): That's a lie.
+	/TALKING HEAD (LV 81): If I were to theoretically ever accept any deal...
+	/TALKING HEAD (LV 81): It would theoretically not be from someone like you.
+	$INDJUMP 1 108
 - FIND SOMEONE ELSE
-	$INDJUMP 1 123
+	$INDJUMP 1 119
 $ENDCHOICE
 /PAWN: Thank you for your help, sir!
 $CALL tvguy_change_pose
 /TALKING HEAD (LV 81): There's one more thing you have to know.
-/TALKING HEAD (LV 81): We're closing our application in 30 Time.
+$CALL start_timer
+/TALKING HEAD (LV 81): We're closing our application in 60 Time.
 /TALKING HEAD (LV 81): You need to hurry.
 /TALKING HEAD (LV 81): Do what you have to do.
 $CALL gain_xp 10

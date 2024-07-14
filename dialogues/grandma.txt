@@ -45,6 +45,7 @@
 				$CALL play_sound victory-fanfare.mp3
 				//GRANDMA (LV 51) HAS BEEN DEFEATED!
 				/PAWN: Fuck.
+				$CALL stop_background_sound
 				//There's no way you can find someone else to help. You don't have time.
 				//Maybe if you return to Talking Head you can still find a way to get the remaining XP.
 				//There's still hope!

@@ -18,8 +18,13 @@ $CALL transition_fade_out
 	/TALKING HEAD: I had it in me to do what was necessary. To climb the ladder, to get that sweet XP.
 	/TALKING HEAD: Everyone respected me. I was at the top.
 	/TALKING HEAD: And you fucked it all up.
-	/TALKING HEAD: ALL OF IT!
+	/TALKING HEAD: ALL OF IT!!!
+	// ...
+	// After a while, Talking Head fell silent.
+	// What now?
+	$CALL end
 	//THE END
+	$END
 - TO DEFEAT YOU
 	/PAWN: You're a professional hindrance in an ugly suit. Fuck you.
 	/TALKING HEAD (LV 75): I should've never even tried assisting you.
@@ -29,6 +34,11 @@ $CALL transition_fade_out
 	/TALKING HEAD (LV 81): I had it in me to do what was necessary. To climb the ladder, to get that sweet XP.
 	/TALKING HEAD (LV 81): I had everything.
 	/TALKING HEAD (LV 81): And you fucked it all up.
-	/TALKING HEAD (LV 81): ALL OF IT!
+	/TALKING HEAD (LV 81): ALL OF IT!!!
+	// ...
+	// After a while, Talking Head fell silent.
+	// What now?
+	$CALL end
 	//THE END
+	$END
 $ENDCHOICE

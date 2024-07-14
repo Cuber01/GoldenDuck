@@ -1,6 +1,8 @@
 extends Node2D
 class_name BuiltinLib
 
+@onready var Game: Node = get_parent()
+
 @onready var TransitionFade: ColorRect = $TransitionFade
 @onready var TransitionCurtain: ColorRect = $TransitionCurtain 
 @onready var audio: AudioStreamPlayer = $AudioPlayer
@@ -12,12 +14,12 @@ class_name BuiltinLib
 var item_handle = null
 var xp := 500
 
-const ITEM_SCENE = preload("res://scenery/item.tscn")
-const DOCUMENTATION_TEXTURE = preload("res://assets/documentation.png")
-const NEWSPAPER_TEXTURE = preload("res://assets/newspaper.png")
-const AXE_TEXTURE = preload("res://assets/axe.png")
+const ITEM_SCENE := preload("res://scenery/item.tscn")
+const DOCUMENTATION_TEXTURE := preload("res://assets/documentation.png")
+const NEWSPAPER_TEXTURE := preload("res://assets/newspaper.png")
+const AXE_TEXTURE := preload("res://assets/axe.png")
 
-var initialized = false
+var initialized := false
 
 func transition_fade_out():
 	var tween = create_tween()
@@ -42,7 +44,11 @@ func transition_curtain(make_visible: Node2D, make_invisible: Node2D):
 	TransitionCurtain.position = Vector2(-201, 0)
 
 func tvguy_change_pose():
-	var sprite: AnimatedSprite2D = $Office/TVGuy
+	var sprite: AnimatedSprite2D 
+	if $Office.visible:
+		sprite = $Office/TVGuy
+	else: 
+		sprite = $OfficeOutro/TVGuy
 	var default_scale := sprite.scale.x
 	
 	if sprite.animation == "default":
@@ -140,8 +146,19 @@ func show_nuclear():
 
 func gain_xp(args):
 	xp += int(args[0])
-	XPLabel.text = "LV 22 " + str(xp) + "/1000 XP"
+	if xp > 1000:
+		XPLabel.text = "LV 23 " + str(xp-1000) + "/5000 XP"
+	else:
+		XPLabel.text = "LV 22 " + str(xp) + "/1000 XP"
 
 func chapter(args):
 	var chapter_id: int = int(args[0])
-	get_parent().change_chapter(chapter_id)
+	Game.change_chapter(chapter_id)
+
+func start_timer():
+	Game.timer_started = true
+	TimeLabel.text = TimeLabel.text % "30"
+	TimeLabel.visible = true
+
+func end():
+	Game.enter_to_continue = false
