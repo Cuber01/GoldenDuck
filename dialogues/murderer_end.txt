@@ -20,7 +20,7 @@ $CALL transition_fade_out
 	/TALKING HEAD: And you fucked it all up.
 	/TALKING HEAD: ALL OF IT!!!
 	// ...
-	// After a while, Talking Head fell silent.
+	// After a while, Talking Head falls silent.
 	// What now?
 	$CALL end
 	//THE END
@@ -36,7 +36,7 @@ $CALL transition_fade_out
 	/TALKING HEAD (LV 81): And you fucked it all up.
 	/TALKING HEAD (LV 81): ALL OF IT!!!
 	// ...
-	// After a while, Talking Head fell silent.
+	// After a while, Talking Head falls silent.
 	// What now?
 	$CALL end
 	//THE END

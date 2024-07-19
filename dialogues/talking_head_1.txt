@@ -1,6 +1,7 @@
 $CALL play_background office.mp3
 /TALKING HEAD (LV 81): Welcome!
-/TALKING HEAD (LV 81): I see you've come to see how we've reviewed your application.
+/TALKING HEAD (LV 81): I'm sure you've already heard about me. My name is Talking Head.
+/TALKING HEAD (LV 81): I see you've come here to check how we reviewed your application.
 /TALKING HEAD (LV 81): Give me just a moment.
 
 $CALL spawn_item documentation
@@ -21,7 +22,7 @@ $CALL tvguy_change_pose
 	/TALKING HEAD (LV 81): Nothing in life is guaranteed.
 	/TALKING HEAD (LV 81): We have to take into account your reading skills,
 	rivals, the current attitudes in the market...
-	$INDJUMP 1 20
+	$INDJUMP 1 21
 - READ IT
 	$CALL tvguy_change_pose
 	//You start slowly going through the pile.
@@ -53,7 +54,7 @@ $CALL tvguy_change_pose
 	
 	/PAWN: I'm finished!
 	/TALKING HEAD (LV 81): Excellent!
-	$INDJUMP 1 72
+	$INDJUMP 1 73
 - NO NEED
 	$CALL tvguy_change_pose
 	/TALKING HEAD (LV 81): Erm... Are you sure?
@@ -61,12 +62,12 @@ $CALL tvguy_change_pose
 	- YES
 		/TALKING HEAD (LV 81): If you say so.
 		//You sense disgust in their voice.
-		$INDJUMP 2 72
+		$INDJUMP 2 73
 	- NO
 		$CALL tvguy_change_pose
 		//Talking Head lets out a sigh.
 		/TALKING HEAD (LV 81): Read it, then.
-		$INDJUMP 2 20
+		$INDJUMP 2 21
 	$ENDCHOICE
 $ENDCHOICE
 /TALKING HEAD (LV 81): Since you are familiar with our criteria, we can start the evaluation.
@@ -112,9 +113,9 @@ $CALL tvguy_change_pose
 	/TALKING HEAD (LV 81): That's a lie.
 	/TALKING HEAD (LV 81): If I were to theoretically ever accept any deal...
 	/TALKING HEAD (LV 81): It would theoretically not be from someone like you.
-	$INDJUMP 1 108
+	$INDJUMP 1 109
 - FIND SOMEONE ELSE
-	$INDJUMP 1 119
+	$INDJUMP 1 120
 $ENDCHOICE
 /PAWN: Thank you for your help, sir!
 $CALL tvguy_change_pose

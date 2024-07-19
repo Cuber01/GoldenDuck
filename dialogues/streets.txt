@@ -36,6 +36,6 @@ $CALL play_background cars.mp3
 	- GRANDMA
 		$END
 	- RETURN
-		$INDJUMP 2 6
+		$INDJUMP 2 5
 	$ENDCHOICE
 $ENDCHOICE

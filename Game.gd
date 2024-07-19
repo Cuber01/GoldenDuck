@@ -31,6 +31,7 @@ var chapters: Array[String] = [
 	] 
 
 func _ready():
+	DisplayServer.window_set_title("Speaking from Experience") 
 	DI.reset(SceneryManager)
 	change_chapter(0)
 	
@@ -67,8 +68,6 @@ func _process(delta):
 				TimeLabel.text = timelabel_placeholder % str(time_left)
 			
 			go_further()
-	elif Input.is_action_just_pressed("ui_undo"):
-		end_dialogue()
 	elif text_index < max_text_index:
 		text_index += 1
 		DialogueLabel.visible_characters = text_index
